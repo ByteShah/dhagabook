@@ -1,0 +1,9 @@
+{
+  "name": "DhagaBook",
+  "short_name": "DhagaBook",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "theme_color": "#0B6B52",
+  "background_color": "#FFFFFF",
+  "display": "browser",
+  "start_url": "/"
+}
