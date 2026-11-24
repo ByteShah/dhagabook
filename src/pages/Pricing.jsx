@@ -44,8 +44,8 @@ export default function Pricing() {
                 <p className="plan-sub">Full control from any browser.</p>
               </div>
               <p className="plan-was"><s aria-label="Was ₹49,999">₹49,999</s><b>Save ₹10,000</b></p>
-              <p className="plan-price"><span>₹39,999</span><small>/ year</small></p>
-              <p className="plan-month">That’s about ₹3,330 a month</p>
+              <p className="plan-price"><span>₹39,999</span><small>/ year + 18% GST</small></p>
+              <p className="plan-month">That’s about ₹3,330 a month + GST</p>
               <ul className="plan-list">
                 <Feature>Web application</Feature>
                 <Feature>All 30+ features</Feature>
@@ -67,8 +67,8 @@ export default function Pricing() {
                 <p className="plan-sub">Run your business from the office and on the go.</p>
               </div>
               <p className="plan-was"><s aria-label="Was ₹59,999">₹59,999</s><b>Save ₹10,000</b></p>
-              <p className="plan-price"><span>₹49,999</span><small>/ year</small></p>
-              <p className="plan-month">That’s about ₹4,170 a month</p>
+              <p className="plan-price"><span>₹49,999</span><small>/ year + 18% GST</small></p>
+              <p className="plan-month">That’s about ₹4,170 a month + GST</p>
               <ul className="plan-list">
                 <Feature>Web application</Feature>
                 <Feature strong>Mobile app (Android &amp; iOS)</Feature>
@@ -106,7 +106,7 @@ export default function Pricing() {
               <li key={t}><Check size={18} color="#0B6B52" />{t}</li>
             ))}
           </ul>
-          <p className="fine-print">All prices are billed annually. A one-time setup fee of ₹20,000 applies in the first year. {SITE.taxNote}</p>
+          <p className="fine-print">All prices are billed annually. A one-time setup fee of ₹20,000 (+ GST) applies in the first year. {SITE.taxNote}</p>
         </div>
       </section>
 

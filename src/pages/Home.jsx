@@ -320,18 +320,18 @@ export default function Home() {
             <div className="pricing-teaser-copy">
               <span className="kicker">Pricing</span>
               <h2 className="h2-sm">Simple, transparent yearly pricing</h2>
-              <p className="muted lead-sm">Plans start at ₹39,999 per year — less than ₹110 a day for your entire business.</p>
+              <p className="muted lead-sm">Plans start at ₹39,999 per year + GST — less than ₹110 a day for your entire business.</p>
             </div>
             <div className="teaser-plans">
               <Link to="/pricing" className="teaser-plan" onClick={() => track('cta_click', { cta: 'teaser_web' })}>
                 <span className="teaser-plan-name">Web</span>
                 <span className="teaser-plan-price"><s className="teaser-plan-was" aria-label="Was ₹49,999">₹49,999</s>₹39,999</span>
-                <span className="teaser-plan-per">per year</span>
+                <span className="teaser-plan-per">per year + GST</span>
               </Link>
               <Link to="/pricing" className="teaser-plan teaser-plan--green" onClick={() => track('cta_click', { cta: 'teaser_web_app' })}>
                 <span className="teaser-plan-name">Web + App</span>
                 <span className="teaser-plan-price"><s className="teaser-plan-was" aria-label="Was ₹59,999">₹59,999</s>₹49,999</span>
-                <span className="teaser-plan-per">per year</span>
+                <span className="teaser-plan-per">per year + GST</span>
               </Link>
             </div>
           </div>

@@ -13,7 +13,8 @@ export const SITE = {
   email: EMAIL,
   address: 'Laxmi Sky City, Dastan Circle, Opp. Sardar Party Plot, Kathwada Rd, Nava Naroda, Ahmedabad, Gujarat 382330',
   hours: '8:00 AM to 8:00 PM',
-  taxNote: '[TAX NOTE — e.g. GST applicable]',
+  taxNote: 'Prices are exclusive of GST. 18% GST is added to every invoice.',
+  gstRate: 18,
   // Demo and purchase requests go to /api/lead (server/lead.js), which emails them via Resend.
   formEndpoint: import.meta.env.VITE_FORM_ENDPOINT || '/api/lead',
   setupFee: 20000,
@@ -22,8 +23,8 @@ export const SITE = {
 };
 
 export const PLANS = [
-  { id: 'web', name: 'Web', price: 39999, was: 49999, label: 'Web — ₹39,999 / year' },
-  { id: 'web-app', name: 'Web + App', price: 49999, was: 59999, label: 'Web + App — ₹49,999 / year' },
+  { id: 'web', name: 'Web', price: 39999, was: 49999, label: 'Web — ₹39,999 / year + GST' },
+  { id: 'web-app', name: 'Web + App', price: 49999, was: 59999, label: 'Web + App — ₹49,999 / year + GST' },
   { id: 'custom', name: 'Custom', price: null, label: 'Custom' },
 ];
 
@@ -119,12 +120,13 @@ const software = () => ({
     price: p.price,
     priceCurrency: 'INR',
     url: `${SITE.url}/pricing`,
-    description: `₹${p.price.toLocaleString('en-IN')} per year, plus a one-time setup fee of ₹${SITE.setupFee.toLocaleString('en-IN')}.`,
+    description: `₹${p.price.toLocaleString('en-IN')} per year, plus a one-time setup fee of ₹${SITE.setupFee.toLocaleString('en-IN')}. Prices exclude ${SITE.gstRate}% GST.`,
     priceSpecification: {
       '@type': 'UnitPriceSpecification',
       price: p.price,
       priceCurrency: 'INR',
       unitCode: 'ANN',
+      valueAddedTaxIncluded: false,
       referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'ANN' },
     },
   })),
@@ -141,7 +143,7 @@ const breadcrumb = (name, path) => ({
 export const PRICING_FAQ = [
   {
     q: 'How is DhagaBook billed?',
-    a: 'Every plan is billed yearly. Web is ₹39,999 per year and Web + App is ₹49,999 per year. A one-time setup fee of ₹20,000 is added in the first year.',
+    a: 'Every plan is billed yearly. Web is ₹39,999 per year and Web + App is ₹49,999 per year. A one-time setup fee of ₹20,000 is added in the first year. All prices are exclusive of GST: 18% GST is added to the invoice.',
   },
   {
     q: 'How many users are included?',
@@ -195,7 +197,7 @@ export const ROUTES = {
   '/pricing': {
     title: 'Pricing — Plans from ₹39,999/year | DhagaBook',
     description:
-      'Web ₹39,999/year. Web + App ₹49,999/year. All 30+ features and 5 users included. Custom plans for bigger teams. Book a free demo today.',
+      'Web ₹39,999/year + GST. Web + App ₹49,999/year + GST. All 30+ features and 5 users included. Custom plans for bigger teams. Book a free demo today.',
     schema: () => [organization(), software(), breadcrumb('Pricing', '/pricing'), faqPage()],
   },
   '/contact': {
