@@ -1,7 +1,7 @@
 // Business details and per-page SEO in one place.
 // Fill in the [PLACEHOLDER] values before going live.
 
-const EMAIL = 'hello@codecrafters.in';
+const EMAIL = 'hello@dhagabook.in';
 
 export const SITE = {
   name: 'DhagaBook',
