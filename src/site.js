@@ -1,6 +1,8 @@
 // Business details and per-page SEO in one place.
 // Fill in the [PLACEHOLDER] values before going live.
 
+import { LANDING } from './landing.js';
+
 const EMAIL = 'hello@dhagabook.com';
 
 export const SITE = {
@@ -96,6 +98,16 @@ const organization = () => ({
     postalCode: '382330',
     addressCountry: 'IN',
   },
+  // Not shown on the page: tells search engines where we work and what we offer.
+  areaServed: [
+    ...['Ahmedabad', 'Gandhinagar', 'Surat', 'Vadodara', 'Rajkot'].map((name) => ({ '@type': 'City', name })),
+    { '@type': 'State', name: 'Gujarat' },
+    { '@type': 'Country', name: 'India' },
+  ],
+  knowsAbout: [
+    'GST billing software', 'Accounting software', 'Inventory management software', 'Textile ERP software',
+    'Garment billing software', 'WhatsApp Business API', 'WhatsApp automation', 'Barcode billing', 'Agent commission software',
+  ],
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: SITE.phoneIntl,
@@ -111,6 +123,7 @@ const software = () => ({
   '@id': `${SITE.url}/#software`,
   name: SITE.name,
   applicationCategory: 'BusinessApplication',
+  featureList: 'GST billing, Accounting, Inventory, Purchase, Manufacturing, Textile bundles and labels, Agent commission, WhatsApp automation, Point of sale, Payroll, CRM, Mobile app',
   operatingSystem: 'Web, Android, iOS',
   description:
     'Billing, receivables, inventory, purchasing, payroll and accounting — connected in one platform for Indian businesses.',
@@ -189,9 +202,9 @@ const faqPage = () => ({
 // Per-route metadata. Titles ≤ 60 chars, descriptions ≤ 160 chars.
 export const ROUTES = {
   '/': {
-    title: 'DhagaBook — Business Management Software for India',
+    title: 'DhagaBook — GST Billing & Accounting Software, India',
     description:
-      'GST billing, inventory, receivables, purchasing, payroll and accounting in one app for Indian businesses. Web + mobile, 5 users included. Book a free demo.',
+      'GST billing, accounting, inventory, textile and WhatsApp automation software for Indian businesses. Made in Ahmedabad. Web + mobile app. Book a free demo.',
     schema: () => [
       organization(),
       software(),
@@ -211,7 +224,7 @@ export const ROUTES = {
     schema: () => [organization(), software(), breadcrumb('Pricing', '/pricing'), faqPage()],
   },
   '/contact': {
-    title: 'Book a Free Demo | DhagaBook',
+    title: 'Book a Free Demo — Ahmedabad Office or Online | DhagaBook',
     description:
       'Book a free, personalised DhagaBook demo or buy a plan. We call you, show the modules that matter to your business and help you get set up.',
     schema: () => [organization(), breadcrumb('Book a demo', '/contact')],
@@ -237,6 +250,42 @@ export const ROUTES = {
     schema: () => [organization(), breadcrumb('Delete account', '/delete-account')],
   },
 };
+
+// SEO landing pages (src/landing.js): solutions and locations.
+const landingSchema = (path, p) => {
+  const url = `${SITE.url}${path}`;
+  const faq = {
+    '@type': 'FAQPage',
+    mainEntity: p.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  };
+  const area = p.kind === 'location'
+    ? (p.region ? { '@type': 'State', name: p.city } : { '@type': 'City', name: p.city, containedInPlace: { '@type': 'State', name: 'Gujarat' } })
+    : { '@type': 'Country', name: 'India' };
+  const local = {
+    '@type': ['LocalBusiness', 'ProfessionalService'],
+    '@id': `${url}#business`,
+    name: p.kind === 'location' ? `DhagaBook — ${p.city}` : SITE.name,
+    url,
+    image: `${SITE.url}${SITE.ogImage}`,
+    logo: `${SITE.url}/icon-512.png`,
+    telephone: SITE.phoneIntl,
+    email: SITE.email,
+    priceRange: '₹₹',
+    address: organization().address,
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '08:00',
+      closes: '20:00',
+    },
+    areaServed: area,
+    parentOrganization: { '@id': `${SITE.url}/#organization` },
+  };
+  return [organization(), software(), local, breadcrumb(p.kind === 'location' ? p.city : p.pill, path), faq];
+};
+for (const [path, p] of Object.entries(LANDING)) {
+  ROUTES[path] = { title: p.meta.title, description: p.meta.description, schema: () => landingSchema(path, p) };
+}
 
 export const NOT_FOUND = {
   title: 'Page not found | DhagaBook',
