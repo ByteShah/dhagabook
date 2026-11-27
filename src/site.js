@@ -7,7 +7,7 @@ const EMAIL = 'hello@dhagabook.com';
 
 export const SITE = {
   name: 'DhagaBook',
-  url: (import.meta.env.VITE_SITE_URL || 'https://www.your-domain.com').replace(/\/$/, ''),
+  url: (import.meta.env.VITE_SITE_URL || 'https://www.your-domain.com').trim().replace(/^(?!https?:\/\/)/, 'https://').replace(/\/+$/, ''),
   phone: '+91 9316869720',
   phoneIntl: '+919316869720',
   // WhatsApp chat link with a ready-to-send first message.
@@ -89,7 +89,9 @@ const organization = () => ({
   name: SITE.name,
   url: `${SITE.url}/`,
   logo: `${SITE.url}/icon-512.png`,
-  description: 'Business management software built for India.',
+  description: 'GST billing, accounting, inventory and ERP software built for Indian businesses, with textile features, WhatsApp and a mobile app.',
+  telephone: SITE.phoneIntl,
+  email: SITE.email,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Laxmi Sky City, Dastan Circle, Opp. Sardar Party Plot, Kathwada Rd, Nava Naroda',
@@ -105,7 +107,7 @@ const organization = () => ({
     { '@type': 'Country', name: 'India' },
   ],
   knowsAbout: [
-    'GST billing software', 'Accounting software', 'Inventory management software', 'Textile ERP software',
+    'GST billing software', 'Accounting software', 'Inventory management software', 'ERP software', 'Textile ERP software', 'Manufacturing ERP',
     'Garment billing software', 'WhatsApp Business API', 'WhatsApp automation', 'Barcode billing', 'Agent commission software',
   ],
   contactPoint: {
@@ -126,7 +128,7 @@ const software = () => ({
   featureList: 'GST billing, Accounting, Inventory, Purchase, Manufacturing, Textile bundles and labels, Agent commission, WhatsApp automation, Point of sale, Payroll, CRM, Mobile app',
   operatingSystem: 'Web, Android, iOS',
   description:
-    'Billing, receivables, inventory, purchasing, payroll and accounting — connected in one platform for Indian businesses.',
+    'GST billing, accounting, inventory and ERP software for Indian businesses, with textile features, WhatsApp automation and a mobile app.',
   publisher: { '@id': `${SITE.url}/#organization` },
   ...(reviewSchema().length ? { review: reviewSchema() } : {}),
   offers: PLANS.filter((p) => p.price).map((p) => ({
@@ -202,9 +204,9 @@ const faqPage = () => ({
 // Per-route metadata. Titles ≤ 60 chars, descriptions ≤ 160 chars.
 export const ROUTES = {
   '/': {
-    title: 'DhagaBook — GST Billing & Accounting Software, India',
+    title: 'DhagaBook — GST Billing, Accounting & Textile ERP Software',
     description:
-      'GST billing, accounting, inventory, textile and WhatsApp automation software for Indian businesses. Made in Ahmedabad. Web + mobile app. Book a free demo.',
+      'GST billing, accounting, inventory and ERP software for Indian businesses, with textile features, WhatsApp and a mobile app. Made in Ahmedabad. Free demo.',
     schema: () => [
       organization(),
       software(),
@@ -284,7 +286,7 @@ const landingSchema = (path, p) => {
   return [organization(), software(), local, breadcrumb(p.kind === 'location' ? p.city : p.pill, path), faq];
 };
 for (const [path, p] of Object.entries(LANDING)) {
-  ROUTES[path] = { title: p.meta.title, description: p.meta.description, schema: () => landingSchema(path, p) };
+  ROUTES[path] = { title: p.meta.title, description: p.meta.description, lang: p.lang, schema: () => landingSchema(path, p) };
 }
 
 export const NOT_FOUND = {

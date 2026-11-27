@@ -4,8 +4,17 @@ import { LogoMark } from './Logo.jsx';
 import { Mandala, Lotus } from './Bits.jsx';
 import { Menu, Close, Phone, Chat } from './Icons.jsx';
 import { SITE } from '../site.js';
+import { LANDING, LANDING_NAMES } from '../landing.js';
 import { track } from '../analytics.js';
 import { useSeo } from '../seo.js';
+
+// Footer link groups for the SEO landing pages in landing.js.
+const FOOTER_GROUPS = [
+  ['Software', (p) => p.group === 'software'],
+  ['Textile', (p) => p.group === 'textile'],
+  ['Compare', (p) => p.group === 'compare'],
+  ['Locations', (p) => p.kind === 'location'],
+];
 
 const NAV = [
   { to: '/', label: 'Home' },
@@ -100,7 +109,7 @@ function Footer() {
                 <LogoMark variant="dark" width={36} height={32} />
                 <span className="brand-name brand-name--footer">DhagaBook</span>
               </div>
-              <p>Business management software built for India.</p>
+              <p>GST billing, accounting &amp; ERP software built for India.</p>
               <Lotus className="footer-lotus" />
             </div>
             <div className="footer-cols">
@@ -127,6 +136,14 @@ function Footer() {
               </div>
             </div>
           </div>
+          <nav className="footer-seo" aria-label="Solutions and locations">
+            {FOOTER_GROUPS.map(([title, filter]) => (
+              <div key={title} className="footer-col">
+                <h2 className="footer-title">{title}</h2>
+                {Object.keys(LANDING).filter((p) => filter(LANDING[p])).map((p) => <Link key={p} to={p}>{LANDING_NAMES[p]}</Link>)}
+              </div>
+            ))}
+          </nav>
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} DhagaBook. All rights reserved.</span>
             <span>Made in India</span>

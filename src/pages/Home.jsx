@@ -60,15 +60,15 @@ export default function Home() {
         <div className="container hero-inner">
           <p className="pill-badge">
             <span className="pill-badge__hi deva" lang="hi">भारत के लिए</span>
-            Business software built for India
+            GST billing &amp; ERP software built for India
           </p>
           <h1 className="hero-title">
             Run your entire business from{' '}
             <span className="accent accent-thread">one simple app<Thread /></span>
           </h1>
           <p className="lead hero-lead">
-            Billing, receivables, inventory, purchasing, payroll and accounting — connected in one platform for Indian
-            businesses, from neighbourhood stores to growing manufacturers.
+            GST billing, accounting, inventory, purchase, payroll and textile ERP — connected in one platform with WhatsApp
+            and a mobile app, for Indian businesses from neighbourhood stores to growing manufacturers.
           </p>
           <div className="btn-row">
             <Link to="/contact" className="btn btn-primary btn-lg" onClick={() => track('cta_click', { cta: 'hero_demo' })}>

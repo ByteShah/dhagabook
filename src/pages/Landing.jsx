@@ -5,15 +5,23 @@ import { LANDING, LANDING_NAMES } from '../landing.js';
 import { SITE } from '../site.js';
 import { track } from '../analytics.js';
 
+// Button and heading text for Hindi / Gujarati pages (page copy itself lives in landing.js).
+const UI = {
+  en: { demo: 'Book a free demo', wa: 'WhatsApp us', free: 'Free demo', users: '5 users included', from: 'From ₹39,999 / year', all: 'See all 30+ features', pricing: 'View pricing', faq: 'Questions', also: 'Also see', band: 'See DhagaBook in action for your business', bandText: 'A free walkthrough tailored to your industry — at our office or online.' },
+  hi: { demo: 'फ्री डेमो बुक करें', wa: 'WhatsApp करें', free: 'फ्री डेमो', users: '5 यूज़र शामिल', from: '₹39,999 / वर्ष से', all: 'सभी 30+ फ़ीचर देखें', pricing: 'कीमत देखें', faq: 'सवाल-जवाब', also: 'यह भी देखें', band: 'अपने व्यापार के लिए DhagaBook का डेमो देखें', bandText: 'आपके व्यापार के हिसाब से फ्री डेमो — हमारे ऑफ़िस में या ऑनलाइन।' },
+  gu: { demo: 'ફ્રી ડેમો બુક કરો', wa: 'WhatsApp કરો', free: 'ફ્રી ડેમો', users: '5 યુઝર સામેલ', from: '₹39,999 / વર્ષથી', all: 'બધા 30+ ફીચર જુઓ', pricing: 'કિંમત જુઓ', faq: 'પ્રશ્નો અને જવાબ', also: 'આ પણ જુઓ', band: 'તમારા વેપાર માટે DhagaBook નો ડેમો જુઓ', bandText: 'તમારા વેપાર મુજબ ફ્રી ડેમો — અમારી ઓફિસમાં કે ઓનલાઇન.' },
+};
+
 export default function Landing() {
   const { pathname } = useLocation();
   const path = pathname.replace(/\/$/, '');
   const p = LANDING[path];
   if (!p) return null;
   const where = p.city || p.pill;
+  const t = UI[p.lang] || UI.en;
 
   return (
-    <>
+    <div lang={p.lang || undefined}>
       <section className="bg-cream page-hero-wrap">
         <Mandala className="page-mandala" />
         <div className="page-hero">
@@ -22,12 +30,12 @@ export default function Landing() {
           <Lotus />
           <p className="lead">{p.lead}</p>
           <div className="btn-row">
-            <Link to="/contact" className="btn btn-primary btn-lg" onClick={() => track('cta_click', { cta: 'landing_demo', page: path })}>Book a free demo</Link>
+            <Link to="/contact" className="btn btn-primary btn-lg" onClick={() => track('cta_click', { cta: 'landing_demo', page: path })}>{t.demo}</Link>
             <a href={SITE.whatsapp} className="btn btn-ghost btn-lg" target="_blank" rel="noopener" onClick={() => track('whatsapp_click', { location: `landing${path}` })}>
-              <Chat size={18} /> WhatsApp us
+              <Chat size={18} /> {t.wa}
             </a>
           </div>
-          <p className="lp-ticks"><span><Check size={16} color="#0B6B52" /> Free demo</span><span><Check size={16} color="#0B6B52" /> 5 users included</span><span><Check size={16} color="#0B6B52" /> From ₹39,999 / year</span></p>
+          <p className="lp-ticks"><span><Check size={16} color="#0B6B52" /> {t.free}</span><span><Check size={16} color="#0B6B52" /> {t.users}</span><span><Check size={16} color="#0B6B52" /> {t.from}</span></p>
         </div>
       </section>
 
@@ -51,7 +59,7 @@ export default function Landing() {
           <ul className="lp-features">
             {p.features.map((f) => <li key={f}><Check size={18} color="#0B6B52" />{f}</li>)}
           </ul>
-          <p className="fine-print"><Link to="/features">See all 30+ features</Link> · <Link to="/pricing">View pricing</Link></p>
+          <p className="fine-print"><Link to="/features">{t.all}</Link> · <Link to="/pricing">{t.pricing}</Link></p>
         </div>
       </section>
 
@@ -87,7 +95,7 @@ export default function Landing() {
 
       <section className="section faq-section bg-cream" aria-labelledby="lp-faq">
         <div className="container faq-inner">
-          <h2 id="lp-faq" className="h2">Questions{p.kind === 'location' ? ` from ${where}` : ''}</h2>
+          <h2 id="lp-faq" className="h2">{t.faq}{p.kind === 'location' ? ` from ${where}` : ''}</h2>
           <div className="faq">
             {p.faq.map((f) => (
               <details key={f.q} className="faq-item">
@@ -101,14 +109,14 @@ export default function Landing() {
 
       <section className="section lp-related-wrap">
         <div className="container">
-          <h2 className="lp-related-title">Also see</h2>
+          <h2 className="lp-related-title">{t.also}</h2>
           <ul className="lp-related">
             {p.related.map((r) => <li key={r}><Link to={r}>{LANDING_NAMES[r]}</Link></li>)}
           </ul>
         </div>
       </section>
 
-      <DemoBand title={p.kind === 'location' ? `Book a free DhagaBook demo in ${where}` : 'See DhagaBook in action for your business'} text="A free walkthrough tailored to your industry — at our office or online." />
-    </>
+      <DemoBand title={p.kind === 'location' ? `Book a free DhagaBook demo in ${where}` : t.band} text={t.bandText} />
+    </div>
   );
 }

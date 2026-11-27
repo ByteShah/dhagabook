@@ -6,7 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
 const env = loadEnv();
-const SITE_URL = (env.VITE_SITE_URL || 'https://www.your-domain.com').replace(/\/$/, '');
+const SITE_URL = (env.VITE_SITE_URL || 'https://www.your-domain.com').trim().replace(/^(?!https?:\/\/)/, 'https://').replace(/\/+$/, '');
 const GTM = env.VITE_GTM_ID;
 const GA = env.VITE_GA_ID;
 // Google Search Console HTML-tag verification (content value only).
@@ -26,8 +26,8 @@ const gaHead = GA
   : '';
 
 function page(url) {
-  const { html, head } = render(url);
-  return template.replace('<!--head-->', head + gscHead + gaHead + gtmHead).replace('<!--app-->', html);
+  const { html, head, lang } = render(url);
+  return template.replace('<html lang="en-IN">', `<html lang="${lang}">`).replace('<!--head-->', head + gscHead + gaHead + gtmHead).replace('<!--app-->', html);
 }
 
 for (const url of routes) {

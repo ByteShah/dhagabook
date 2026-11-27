@@ -1637,3 +1637,8 @@ select.input { padding: 0 12px; }
   .lp-chips .chip { font-size: 12.5px; }
   .lp-office { padding: 16px; font-size: 14px; }
 }
+
+/* Footer: links to every solution, comparison and location page */
+.footer-seo { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 40px; padding: 40px 0 8px; margin-top: 40px; border-top: 1px solid #1A5244; }
+.footer-seo .footer-col { font-size: 14px; gap: 10px; min-width: 0; }
+@media (max-width: 900px) { .footer-seo { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

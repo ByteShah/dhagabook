@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import App from './App.jsx';
-import { renderHead } from './seo.js';
+import { renderHead, getMeta, HTML_LANG } from './seo.js';
 import { ROUTES } from './site.js';
 
 export const routes = Object.keys(ROUTES);
@@ -15,5 +15,5 @@ export function render(url) {
       </StaticRouter>
     </StrictMode>
   );
-  return { html, head: renderHead(url) };
+  return { html, head: renderHead(url), lang: HTML_LANG[getMeta(url).lang] || 'en-IN' };
 }

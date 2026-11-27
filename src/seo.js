@@ -8,6 +8,9 @@ export function getMeta(path) {
   return { ...meta, canonical, schema };
 }
 
+// <html lang> per page: Hindi and Gujarati landing pages, English everywhere else.
+export const HTML_LANG = { hi: 'hi-IN', gu: 'gu-IN' };
+
 const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -15,6 +18,7 @@ const esc = (s) =>
 export function renderHead(path) {
   const m = getMeta(path);
   const img = `${SITE.url}${SITE.ogImage}`;
+  const ogLocale = { hi: 'hi_IN', gu: 'gu_IN' }[m.lang] || SITE.locale;
   const tags = [
     `<title>${esc(m.title)}</title>`,
     `<meta name="description" content="${esc(m.description)}">`,
@@ -22,7 +26,7 @@ export function renderHead(path) {
     m.noindex ? '' : `<link rel="canonical" href="${esc(m.canonical)}">`,
     `<meta property="og:type" content="website">`,
     `<meta property="og:site_name" content="${SITE.name}">`,
-    `<meta property="og:locale" content="${SITE.locale}">`,
+    `<meta property="og:locale" content="${ogLocale}">`,
     `<meta property="og:title" content="${esc(m.title)}">`,
     `<meta property="og:description" content="${esc(m.description)}">`,
     `<meta property="og:url" content="${esc(m.canonical)}">`,
@@ -58,6 +62,7 @@ export function useSeo(path) {
   useEffect(() => {
     const m = getMeta(path);
     document.title = m.title;
+    document.documentElement.lang = HTML_LANG[m.lang] || 'en-IN';
     setTag('meta[name="description"]', 'content', m.description);
     setTag('meta[property="og:title"]', 'content', m.title);
     setTag('meta[property="og:description"]', 'content', m.description);

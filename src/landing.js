@@ -1,6 +1,7 @@
 // SEO landing pages: solutions (what people search for) and locations (where they search from).
 // Every page has its own copy, points, areas and FAQ, so none of them is a thin duplicate.
-// Fields: kind ('solution' | 'location'), meta {title ≤ 60, description ≤ 160}, pill, h1, accent,
+// Fields: kind ('solution' | 'location'), group ('software' | 'textile' | 'compare', solutions only),
+// lang ('hi' | 'gu', optional; default English), meta {title ≤ 60, description ≤ 160}, pill, h1, accent,
 // lead, points [[title, text]], featuresTitle, features [..], local {title, text, groups [[label, [..]]]},
 // faq [{q, a}], related [paths], city (location pages: schema areaServed).
 
@@ -8,6 +9,7 @@ export const LANDING = {
   // ---------------- Solutions ----------------
   '/accounting-software': {
     kind: 'solution',
+    group: 'software',
     meta: {
       title: 'GST Accounting Software for Small Business | DhagaBook',
       description: 'GST accounting software for Indian businesses: invoices, ledgers, receivables, bank reconciliation, P&L and GST reports. Web + mobile. Free demo.',
@@ -41,8 +43,9 @@ export const LANDING = {
 
   '/whatsapp-automation': {
     kind: 'solution',
+    group: 'software',
     meta: {
-      title: 'WhatsApp Automation for Business — Invoices, Reminders | DhagaBook',
+      title: 'WhatsApp Invoice & Reminder Automation | DhagaBook',
       description: 'Send invoices, payment reminders, payment links, order updates and your catalog on WhatsApp automatically, from your billing software. Official API.',
     },
     pill: 'WhatsApp Business API',
@@ -74,6 +77,7 @@ export const LANDING = {
 
   '/textile-software': {
     kind: 'solution',
+    group: 'textile',
     meta: {
       title: 'Textile ERP & Billing Software for Wholesalers | DhagaBook',
       description: 'Textile billing and ERP software for garment and saree wholesalers and manufacturers: designs, sets, bundles, bags, barcode labels, agent commission and GST.',
@@ -105,13 +109,678 @@ export const LANDING = {
     related: ['/surat', '/ahmedabad', '/accounting-software', '/whatsapp-automation'],
   },
 
+  '/billing-software': {
+    kind: 'solution',
+    group: 'software',
+    meta: {
+      title: 'GST Billing Software for Small Business in India | DhagaBook',
+      description: 'Online GST billing software for small businesses: GST invoices in seconds, barcode billing, stock, payments and WhatsApp invoices. Web + mobile app. Free demo.',
+    },
+    pill: 'GST billing software',
+    h1: 'GST billing software for',
+    accent: 'small and growing businesses',
+    lead: 'Make a GST invoice in seconds, share it on WhatsApp, and let stock, payments and accounts update on their own. DhagaBook is billing software for Indian businesses that have outgrown a bill book, Excel or a single-PC billing program.',
+    points: [
+      ['GST invoices in seconds', 'Pick the party and items — HSN, CGST / SGST / IGST and totals are filled in for you. Print or share as PDF.'],
+      ['Barcode billing', 'Scan items at the counter or while packing. Every scan picks the right rate from the customer’s price list.'],
+      ['Quotation to invoice', 'Quotation, sales order, delivery and invoice in one flow, so nothing is typed twice.'],
+      ['Invoices on WhatsApp', 'Invoices, receipts and payment reminders go to the customer on WhatsApp automatically.'],
+      ['Stock updates itself', 'Every bill reduces stock, and every purchase adds it, godown by godown.'],
+      ['Billing from the phone', 'Make bills, check dues and collect payments from the DhagaBook mobile app.'],
+    ],
+    featuresTitle: 'Everything you need to bill and get paid',
+    features: [
+      'GST invoices with HSN', 'Quotations and proforma', 'Sales orders and delivery', 'Credit and debit notes',
+      'Barcode and counter billing (POS)', 'Customer-wise price lists', 'Multiple godowns', 'Payment receipts and links',
+      'Overdue reminders', 'Your own invoice numbering', 'Multi-company billing', 'Mobile billing app',
+    ],
+    faq: [
+      { q: 'What is GST billing software?', a: 'GST billing software makes tax invoices that follow GST rules — GSTIN, HSN codes, place of supply and the right CGST, SGST or IGST — and keeps a record for your GST returns. DhagaBook does this and also updates your stock and accounts from every bill.' },
+      { q: 'Is DhagaBook billing software online or offline?', a: 'DhagaBook runs online, so you can bill from any computer or phone and your data is backed up. The mobile app saves entries when the internet is weak and sends them once you are back online.' },
+      { q: 'Can I bill with a barcode scanner?', a: 'Yes. Scan items with a USB scanner at the counter or with the phone camera, and the item, rate and GST are added to the bill.' },
+      { q: 'How many users can make bills?', a: 'Every plan includes 5 users, so your billing staff, accountant and you can work at the same time. More users can be added on a custom plan.' },
+      { q: 'How much does the billing software cost?', a: 'Plans start at ₹39,999 per year + GST, with billing, inventory, accounting, WhatsApp and every other feature included.' },
+    ],
+    related: ['/inventory-management-software', '/accounting-software', '/pos-billing-software', '/tally-alternative'],
+  },
+
+  '/inventory-management-software': {
+    kind: 'solution',
+    group: 'software',
+    meta: {
+      title: 'Inventory & Stock Management Software India | DhagaBook',
+      description: 'Inventory management software with live stock, multiple godowns, barcode scanning, low-stock alerts and purchase orders — connected to GST billing. Free demo.',
+    },
+    pill: 'Inventory management software',
+    h1: 'Inventory software that',
+    accent: 'always knows your real stock',
+    lead: 'Stop counting from registers. DhagaBook updates stock with every purchase, sale, transfer and return, across every godown and rack, and tells you what to reorder before it runs out.',
+    points: [
+      ['Live stock, every godown', 'See stock by item, design, size, colour and location — on the computer or the phone.'],
+      ['Barcode scanning', 'Receive, pick, pack and count with a scanner or the phone camera, so mistakes drop.'],
+      ['Low-stock alerts', 'Reorder levels per item, with purchase orders suggested when stock falls.'],
+      ['Purchase to stock', 'Purchase orders, goods receipt and vendor bills in one flow, with costs carried to the item.'],
+      ['Transfers and racks', 'Move stock between godowns, shops and racks and always know where an item is.'],
+      ['Stock that matches accounts', 'Stock value flows to your books, so your balance sheet and your godown agree.'],
+    ],
+    featuresTitle: 'Stock control features',
+    features: [
+      'Multi-godown inventory', 'Stock transfers', 'Rack and bin locations', 'Barcode labels',
+      'Phone-camera scanning', 'Stock counts', 'Reorder alerts', 'Purchase orders',
+      'Variants: size and colour', 'Sets and bundles', 'Stock valuation', 'Stock reports in Excel',
+    ],
+    faq: [
+      { q: 'What is inventory management software?', a: 'It is software that records every item coming in and going out, so you always know how much stock you have, where it is and what it is worth. DhagaBook links it to billing, purchase and accounts, so stock is never entered twice.' },
+      { q: 'Can I manage more than one godown or shop?', a: 'Yes. Add as many godowns, shops and rack locations as you need, transfer stock between them and see stock for each one.' },
+      { q: 'Does it support sizes and colours?', a: 'Yes. Items can have sizes, colours and other variants, and textile businesses can also stock sets, bundles and bags.' },
+      { q: 'Can I count stock with a phone?', a: 'Yes. The DhagaBook app scans barcodes with the phone camera for stock counts, picking and dispatch.' },
+    ],
+    related: ['/billing-software', '/erp-software', '/textile-software', '/manufacturing-software'],
+  },
+
+  '/erp-software': {
+    kind: 'solution',
+    group: 'software',
+    meta: {
+      title: 'ERP Software for Small Business in India | DhagaBook',
+      description: 'Affordable cloud ERP for Indian SMEs: sales, GST billing, purchase, inventory, manufacturing, accounting, CRM, payroll and WhatsApp in one. From ₹39,999/yr.',
+    },
+    pill: 'ERP for small business',
+    h1: 'One ERP for your',
+    accent: 'whole business',
+    lead: 'Most small businesses run on a billing program, a few Excel sheets and a WhatsApp group. DhagaBook replaces all of them with one connected system — built for Indian GST and the way Indian businesses trade.',
+    points: [
+      ['Sales and CRM', 'Leads, quotations, orders and follow-ups in one pipeline.'],
+      ['Purchase and inventory', 'Purchase orders, vendor bills and live stock across godowns.'],
+      ['Manufacturing', 'Bill of materials, production orders and material consumption.'],
+      ['Accounting and GST', 'Every transaction posts to the books, with GST reports ready for filing.'],
+      ['People', 'Employees, attendance, leave, payroll and projects.'],
+      ['WhatsApp and mobile', 'Documents and reminders on WhatsApp, and the business on your phone.'],
+    ],
+    featuresTitle: 'Modules in DhagaBook ERP',
+    features: [
+      'Sales & billing', 'CRM', 'Point of sale', 'Online store',
+      'Purchase', 'Inventory & warehouse', 'Barcode', 'Manufacturing & BOM',
+      'Accounting & GST', 'Multi-company', 'HR & payroll', 'Projects & tasks',
+    ],
+    faq: [
+      { q: 'What is ERP software?', a: 'ERP (enterprise resource planning) software connects all the work of a business — sales, purchase, stock, production, accounts and people — in one system, so the same data is never entered twice and reports are always current.' },
+      { q: 'Is ERP only for big companies?', a: 'No. DhagaBook is priced and set up for small and mid-sized Indian businesses: 5 users and every module from ₹39,999 per year + GST, with setup help from our team.' },
+      { q: 'How long does it take to start?', a: 'Most businesses are billing within days. We import your parties, items and opening balances and train your team in Gujarati, Hindi or English.' },
+      { q: 'Which industries use DhagaBook ERP?', a: 'Textile and garment wholesalers and manufacturers, distributors, traders, retailers and small factories.' },
+      { q: 'Do you provide ERP software in Ahmedabad and Surat?', a: 'Yes. DhagaBook is made in Ahmedabad, and we set up and support ERP for businesses in Ahmedabad, Surat, Vadodara, Rajkot, Gandhinagar and across Gujarat and India.' },
+      { q: 'Is it cloud ERP?', a: 'Yes. DhagaBook runs online, so the office, godown, shop and owner all see the same live data from a computer or phone.' },
+    ],
+    related: ['/inventory-management-software', '/manufacturing-software', '/odoo-alternative', '/ahmedabad'],
+  },
+
+  '/pos-billing-software': {
+    kind: 'solution',
+    group: 'software',
+    meta: {
+      title: 'POS Billing Software for Retail & Garment Shops | DhagaBook',
+      description: 'Fast counter billing with barcode scanning, GST receipts on WhatsApp and live stock. POS software for clothing, garment and retail shops, linked to accounts.',
+    },
+    pill: 'POS billing software',
+    h1: 'POS billing for your counter,',
+    accent: 'linked to stock and accounts',
+    lead: 'Scan, bill and send the receipt on WhatsApp in seconds. Every counter sale updates stock and accounts straight away, so the shop, the godown and the owner see the same numbers.',
+    points: [
+      ['Fast counter billing', 'A simple screen built for speed at a busy counter.'],
+      ['Barcode scanning', 'Scan piece labels to add the item, size, colour and rate.'],
+      ['Receipts on WhatsApp', 'Send the receipt to the customer’s WhatsApp instead of printing.'],
+      ['Cash, UPI and card', 'Take payment in any mode and close the day with a clear cash count.'],
+      ['Shop and godown in sync', 'Counter sales reduce the same stock your wholesale team sells from.'],
+      ['Owner view on the phone', 'Today’s sales and collections on the mobile app.'],
+    ],
+    featuresTitle: 'Made for retail counters',
+    features: [
+      'Barcode billing', 'GST receipts', 'Receipts on WhatsApp', 'Cash / UPI / card',
+      'Piece labels with prices', 'Size and colour items', 'Returns and exchanges', 'Day-end cash report',
+      'Multiple counters', 'Customer history', 'Live stock', 'Sales reports',
+    ],
+    faq: [
+      { q: 'Is DhagaBook good for a clothing shop?', a: 'Yes. Items can have sizes and colours, every piece can carry a barcode label, and counter sales share stock with wholesale and online orders.' },
+      { q: 'Can I print labels for my items?', a: 'Yes. Print piece labels with design, size or colour, barcode and price, ready to scan at the counter.' },
+      { q: 'Can I run several shops?', a: 'Yes. Each shop can have its own counter and stock location, and you see all of them together.' },
+    ],
+    related: ['/billing-software', '/garment-billing-software', '/inventory-management-software', '/billing-app'],
+  },
+
+  '/billing-app': {
+    kind: 'solution',
+    group: 'software',
+    meta: {
+      title: 'Billing & Accounting App for Android and iPhone | DhagaBook',
+      description: 'App for owners: bills, dues, stock, collections and barcode scanning on your phone, linked to the office software. Works on weak internet. Android, iOS.',
+    },
+    pill: 'Mobile billing app',
+    h1: 'Your business,',
+    accent: 'in your pocket',
+    lead: 'The DhagaBook app for Android and iPhone shows today’s sales, collections, dues and stock, and lets your team bill, scan and dispatch from the phone — all linked live to the office software.',
+    points: [
+      ['Owner dashboard', 'Sales, collections, dues and GST this month at a glance.'],
+      ['Who owes you', 'Overdue parties with one-tap WhatsApp reminders.'],
+      ['Bill on the go', 'Make orders and invoices from the shop floor or a customer visit.'],
+      ['Scan with the camera', 'Barcode scanning for counts, picking and dispatch — no scanner needed.'],
+      ['Works on weak internet', 'Entries are saved on the phone and sent once the network is back.'],
+      ['Safe sign-in', 'Fingerprint or face unlock, each phone approved, and remote sign-out for a lost phone.'],
+    ],
+    featuresTitle: 'What you can do on the app',
+    features: [
+      'Today’s sales and collections', 'Party dues and ledgers', 'Stock at a glance', 'Orders and invoices',
+      'WhatsApp reminders', 'Camera barcode scanning', 'Stock counts', 'Pick and dispatch',
+      'Offline entries', 'Fingerprint / face unlock', 'Android and iOS', 'Same data as the web app',
+    ],
+    faq: [
+      { q: 'Is the app separate from the computer software?', a: 'No. The app and the web software share the same live data, so a bill made on the phone appears in the office immediately.' },
+      { q: 'Which plan includes the app?', a: 'The Web + App plan, ₹49,999 per year + GST, includes the Android and iPhone app for your users.' },
+      { q: 'Does the app work without internet?', a: 'Entries made with a weak or no connection are stored on the phone and sent automatically once you are online.' },
+    ],
+    related: ['/billing-software', '/accounting-software', '/inventory-management-software', '/whatsapp-automation'],
+  },
+
+  '/manufacturing-software': {
+    kind: 'solution',
+    group: 'software',
+    meta: {
+      title: 'Manufacturing ERP Software with BOM & Stock | DhagaBook',
+      description: 'Manufacturing software for small factories: bill of materials, production orders, raw material stock, costing, purchase and GST billing. Free demo.',
+    },
+    pill: 'Manufacturing software',
+    h1: 'Manufacturing software for',
+    accent: 'small factories and units',
+    lead: 'Plan production, issue raw material and know the real cost of what you make. Finished goods flow straight into stock and billing, and raw material shortages show up before they stop the line.',
+    points: [
+      ['Bill of materials', 'Multi-level BOMs with components, quantities and costs.'],
+      ['Production orders', 'Plan what to make, issue material and record output.'],
+      ['Raw material stock', 'Consumption updates stock automatically, with reorder alerts.'],
+      ['Product costing', 'Component costs roll up so you know your margin on every product.'],
+      ['Purchase planning', 'Buy what production needs, with purchase orders and vendor bills.'],
+      ['Sell what you make', 'Finished goods go straight into stock, orders and GST invoices.'],
+    ],
+    featuresTitle: 'Manufacturing features',
+    features: [
+      'Multi-level BOM', 'Manufacturing orders', 'Material consumption', 'Component costing',
+      'Raw material stock', 'Finished goods stock', 'Reorder alerts', 'Purchase orders',
+      'Barcode labels', 'GST billing', 'Accounting', 'Owner dashboard on mobile',
+    ],
+    faq: [
+      { q: 'Is it suitable for garment manufacturing?', a: 'Yes. Garment makers use the bill of materials for fabric and trims, and the Bundle Builder to create finished pieces, sets and bundles with barcodes.' },
+      { q: 'Can I track raw material consumption?', a: 'Yes. Each production order issues material from stock, so raw material and finished goods stay accurate.' },
+    ],
+    related: ['/erp-software', '/inventory-management-software', '/textile-software', '/garment-billing-software'],
+  },
+
+  // ---------------- Comparisons ----------------
+  '/tally-alternative': {
+    kind: 'solution',
+    group: 'compare',
+    meta: {
+      title: 'Best Tally Alternative: Online GST Software | DhagaBook',
+      description: 'Looking for a Tally alternative? DhagaBook is online GST billing, accounting and inventory with a mobile app, WhatsApp and textile features. Free demo.',
+    },
+    pill: 'Tally alternative',
+    h1: 'A Tally alternative for businesses',
+    accent: 'that work beyond one PC',
+    lead: 'Tally is the accounting standard many Indian businesses grew up with, usually installed on a computer in the office. If your team now bills from the shop, the godown and the phone, DhagaBook gives you the same GST books online — plus stock, sales, WhatsApp and a mobile app in one system.',
+    points: [
+      ['Online, from anywhere', 'Office, godown, shop and owner work on the same live data — no copying data between computers.'],
+      ['Accounts your CA recognises', 'Ledgers, day book, trial balance, P&L, balance sheet and GST reports, exportable to Excel.'],
+      ['More than accounting', 'Sales, CRM, purchase, inventory, manufacturing and payroll in the same system.'],
+      ['WhatsApp built in', 'Invoices, receipts and payment reminders sent automatically.'],
+      ['Mobile app', 'Dues, stock and sales on Android and iPhone, with camera barcode scanning.'],
+      ['Easy move from Tally', 'Parties, items and opening balances imported, with our team helping you switch.'],
+    ],
+    featuresTitle: 'What you keep, and what you gain',
+    features: [
+      'GST invoices and returns data', 'Party ledgers', 'Cash book and day book', 'Trial balance, P&L, balance sheet',
+      'Kasar / vatav in payments', 'Multi-company', 'Live stock across godowns', 'Barcode billing',
+      'WhatsApp invoices and reminders', 'Mobile app', 'CRM and follow-ups', 'Textile bundles and agents',
+    ],
+    faq: [
+      { q: 'What is the best alternative to Tally?', a: 'It depends on how you work. If you only need accounting on one computer, Tally does that well. If you want online access, a mobile app, stock, sales and WhatsApp in the same system — especially for trading or textile businesses — DhagaBook is built for that.' },
+      { q: 'Can I move my data from Tally to DhagaBook?', a: 'Yes. Export parties, items and balances from Tally to Excel and we import them during setup, so you start with your opening balances in place.' },
+      { q: 'Will my CA be comfortable with DhagaBook?', a: 'Yes. Your CA gets a login and the standard reports — ledgers, trial balance, P&L, balance sheet and GST reports — with export to Excel and PDF.' },
+      { q: 'Is DhagaBook more expensive than Tally?', a: 'DhagaBook is a yearly plan from ₹39,999 + GST with 5 users and every module included — billing, inventory, accounting, CRM, WhatsApp and more — so there are no separate add-ons or remote-access charges to buy.' },
+    ],
+    related: ['/accounting-software', '/billing-software', '/vyapar-alternative', '/busy-alternative'],
+  },
+
+  '/vyapar-alternative': {
+    kind: 'solution',
+    group: 'compare',
+    meta: {
+      title: 'Vyapar Alternative for Growing Businesses | DhagaBook',
+      description: 'Outgrowing a simple billing app? DhagaBook adds multi-user ERP, godowns, manufacturing, agents, textile bundles and WhatsApp automation. Book a demo.',
+    },
+    pill: 'Vyapar alternative',
+    h1: 'When your business',
+    accent: 'outgrows a billing app',
+    lead: 'Vyapar is a popular, simple billing app for shops and small businesses. When you add staff, godowns, agents, production or a wholesale textile range, you need a full business system — that is where DhagaBook fits.',
+    points: [
+      ['A team, not just one person', '5 users included, each with their own access, working at the same time.'],
+      ['Wholesale-ready', 'Party-wise price lists, agents and commission, LR and transport on bills.'],
+      ['Textile depth', 'Designs, sizes, sets, bundles, bags and coded-price labels.'],
+      ['Production and purchase', 'BOM, production orders, purchase orders and vendor bills.'],
+      ['WhatsApp automation', 'Official WhatsApp API: invoices, reminders, catalog and campaigns.'],
+      ['Set up for you', 'Our team imports your data and trains your staff in Gujarati, Hindi or English.'],
+    ],
+    featuresTitle: 'What DhagaBook adds',
+    features: [
+      'Multi-user with roles', 'Multi-company', 'Godowns and racks', 'Agent commission',
+      'Customer price lists', 'Sets and bundles', 'Manufacturing & BOM', 'CRM pipeline',
+      'Payroll and attendance', 'WhatsApp Business API', 'Online store', 'Mobile app',
+    ],
+    faq: [
+      { q: 'Is DhagaBook a good Vyapar alternative?', a: 'If you are a single shop making a few bills a day, a simple app may be all you need. If you have staff, godowns, agents, production or a textile range to manage, DhagaBook gives you a complete system with setup support.' },
+      { q: 'Can I import my data from Vyapar?', a: 'Yes. Export your parties and items to Excel and we import them, along with your opening balances.' },
+      { q: 'Does DhagaBook have a mobile app like Vyapar?', a: 'Yes. The DhagaBook app for Android and iPhone is linked live to the web software and is included in the Web + App plan.' },
+    ],
+    related: ['/billing-software', '/erp-software', '/mybillbook-alternative', '/tally-alternative'],
+  },
+
+  '/mybillbook-alternative': {
+    kind: 'solution',
+    group: 'compare',
+    meta: {
+      title: 'myBillBook Alternative with Full ERP | DhagaBook',
+      description: 'Need more than invoices? DhagaBook combines GST billing with inventory, purchase, production, CRM, agents and WhatsApp for wholesalers and textile businesses.',
+    },
+    pill: 'myBillBook alternative',
+    h1: 'Billing plus everything',
+    accent: 'that happens after the bill',
+    lead: 'myBillBook is a well-known GST billing app for small businesses. DhagaBook is for businesses that need the bill connected to everything else — stock in several godowns, purchase, production, agents, dispatch and accounts your CA can close.',
+    points: [
+      ['From enquiry to payment', 'Lead, quotation, order, dispatch, invoice and payment in one flow.'],
+      ['Purchase and vendors', 'Purchase orders, goods receipt and vendor bills linked to stock.'],
+      ['Agents and commission', 'Commission worked out on payments received, with agent statements.'],
+      ['Dispatch details', 'LR number, transport and parcels on the delivery and bill.'],
+      ['Full accounts', 'Bank reconciliation, ledgers, P&L and balance sheet.'],
+      ['Built for textile', 'Bundles, bags, sets and piece labels for garment and saree businesses.'],
+    ],
+    featuresTitle: 'Beyond billing',
+    features: [
+      'CRM and follow-ups', 'Purchase orders', 'Godowns and racks', 'Barcode labels',
+      'Agent commission', 'Dispatch and LR details', 'Bank reconciliation', 'Multi-company',
+      'Manufacturing & BOM', 'Payroll', 'WhatsApp automation', 'Mobile app',
+    ],
+    faq: [
+      { q: 'Who should choose DhagaBook over a billing app?', a: 'Wholesalers, distributors, manufacturers and textile businesses with several staff, godowns or agents, who want billing, stock and accounts in one connected system.' },
+      { q: 'Can I switch in the middle of the year?', a: 'Yes. We bring in your parties, items and balances as on the switch date, so your books continue without a gap.' },
+    ],
+    related: ['/billing-software', '/vyapar-alternative', '/zoho-books-alternative', '/textile-software'],
+  },
+
+  '/zoho-books-alternative': {
+    kind: 'solution',
+    group: 'compare',
+    meta: {
+      title: 'Zoho Books Alternative for Indian SMEs | DhagaBook',
+      description: 'Accounting, inventory, manufacturing, CRM and WhatsApp in one Indian ERP with textile features and Gujarati / Hindi support. Compare with Zoho Books. Free demo.',
+    },
+    pill: 'Zoho Books alternative',
+    h1: 'Accounting, stock and sales',
+    accent: 'in one system, set up for you',
+    lead: 'Zoho Books is a strong online accounting product, with inventory, CRM and other needs covered by separate Zoho apps. DhagaBook keeps all of it in one system, designed around Indian trade practice, and our team sets it up with you.',
+    points: [
+      ['One system, one price', 'Accounting, inventory, sales, purchase, CRM, payroll and WhatsApp in one plan.'],
+      ['Indian trade practice', 'Kasar, vatav, agents, transport and payments against the oldest bills.'],
+      ['Textile-ready', 'Designs, sizes, sets, bundles and bags with barcode labels.'],
+      ['Manufacturing included', 'Bill of materials and production orders, no extra product to buy.'],
+      ['Local, human support', 'Setup, import and training in Gujarati, Hindi or English, 8 AM to 8 PM.'],
+      ['Mobile app', 'Owner dashboard, billing and barcode scanning on Android and iPhone.'],
+    ],
+    featuresTitle: 'Included in every DhagaBook plan',
+    features: [
+      'Accounting & GST', 'Inventory & godowns', 'Sales & CRM', 'Purchase',
+      'Manufacturing & BOM', 'Point of sale', 'Online store', 'HR & payroll',
+      'WhatsApp Business API', 'Agent commission', 'Multi-company', 'Mobile app',
+    ],
+    faq: [
+      { q: 'How is DhagaBook different from Zoho Books?', a: 'Zoho Books focuses on accounting, with other areas in separate Zoho apps. DhagaBook puts accounting, stock, sales, production, payroll and WhatsApp in one system, with features for Indian wholesale and textile trade and hands-on setup.' },
+      { q: 'Can I move from Zoho Books?', a: 'Yes. Export your contacts, items and balances and we import them during setup.' },
+    ],
+    related: ['/accounting-software', '/erp-software', '/tally-alternative', '/busy-alternative'],
+  },
+
+  '/busy-alternative': {
+    kind: 'solution',
+    group: 'compare',
+    meta: {
+      title: 'Busy Accounting Software Alternative (Online) | DhagaBook',
+      description: 'An online alternative to Busy for traders and distributors: GST accounting, inventory, agents, WhatsApp and a mobile app, with live data in office and godown.',
+    },
+    pill: 'Busy alternative',
+    h1: 'A Busy alternative that',
+    accent: 'runs online and on your phone',
+    lead: 'Busy is long-trusted desktop accounting and inventory software for traders and distributors. DhagaBook gives you the same depth online — so your office, godown, salesmen and you work on the same live data, with WhatsApp and a mobile app built in.',
+    points: [
+      ['Live data everywhere', 'No data copying between branches — everyone works on one online system.'],
+      ['Trader and distributor ready', 'Party-wise rates, agents, godowns, dispatch and LR details.'],
+      ['Accounts and GST', 'Ledgers, ageing, bank reconciliation, P&L, balance sheet and GST reports.'],
+      ['Salesmen on mobile', 'Orders, dues and stock on Android and iPhone.'],
+      ['WhatsApp automation', 'Invoices, reminders and payment links sent automatically.'],
+      ['Smooth switch', 'Parties, items and balances imported by our team.'],
+    ],
+    featuresTitle: 'What traders get',
+    features: [
+      'GST billing', 'Party-wise price lists', 'Multi-godown stock', 'Barcode',
+      'Agent commission', 'Dispatch and LR', 'Aged receivables', 'Bank reconciliation',
+      'Multi-company', 'CRM', 'WhatsApp', 'Mobile app',
+    ],
+    faq: [
+      { q: 'Is DhagaBook good for distributors?', a: 'Yes. Customer-wise price lists, multiple godowns, agents, dispatch details and receivables follow-up are all built in.' },
+      { q: 'Can I import my Busy data?', a: 'Yes. Export masters and balances to Excel and we import them during setup.' },
+    ],
+    related: ['/tally-alternative', '/accounting-software', '/inventory-management-software', '/erp-software'],
+  },
+
+  '/khatabook-alternative': {
+    kind: 'solution',
+    group: 'compare',
+    meta: {
+      title: 'Khatabook Alternative with Billing & Stock | DhagaBook',
+      description: 'Going beyond a digital khata? DhagaBook links party ledgers to GST invoices, stock, purchase and accounts, with WhatsApp reminders and a mobile app. Free demo.',
+    },
+    pill: 'Khatabook alternative',
+    h1: 'From udhar khata to',
+    accent: 'complete business books',
+    lead: 'Digital khata apps like Khatabook made it easy to record udhar on the phone. When you also need GST invoices, stock, purchase and proper accounts, DhagaBook keeps every party’s khata connected to the bills, payments and goods behind it.',
+    points: [
+      ['Khata linked to bills', 'Every party ledger is built from real invoices, payments and returns.'],
+      ['Payment reminders', 'Automatic WhatsApp reminders with a payment link for overdue parties.'],
+      ['GST invoices', 'Proper tax invoices with HSN and GST, not just entries.'],
+      ['Stock and purchase', 'Know what you bought, what you sold and what is left.'],
+      ['Books for your CA', 'Trial balance, P&L, balance sheet and GST reports.'],
+      ['On your phone', 'Dues, collections and stock in the mobile app.'],
+    ],
+    featuresTitle: 'Your khata, and much more',
+    features: [
+      'Party ledgers', 'Aged receivables', 'WhatsApp reminders', 'UPI payment links',
+      'GST invoices', 'Purchase bills', 'Live stock', 'Cash book and bank book',
+      'Kasar / vatav', 'P&L and balance sheet', 'Multi-user', 'Mobile app',
+    ],
+    faq: [
+      { q: 'Is DhagaBook a khata app?', a: 'DhagaBook includes everything a khata app does — party balances, dues and reminders — and connects it to GST billing, stock and full accounts.' },
+      { q: 'Can I bring my existing party balances?', a: 'Yes. We import your parties with their opening balances, so every khata continues as it is.' },
+    ],
+    related: ['/billing-app', '/accounting-software', '/billing-software', '/vyapar-alternative'],
+  },
+
+  '/garment-billing-software': {
+    kind: 'solution',
+    group: 'textile',
+    meta: {
+      title: 'Garment & Cloth Shop Billing Software | DhagaBook',
+      description: 'Billing software for garment and cloth shops: size and colour stock, barcode piece labels, GST invoices, sets, returns and WhatsApp receipts. Free demo.',
+    },
+    pill: 'Garment billing software',
+    h1: 'Garment and cloth shop billing,',
+    accent: 'size by size, piece by piece',
+    lead: 'Readymade garments are sold by design, size and colour — and so is your stock in DhagaBook. Print a barcode label for every piece, bill by scanning, and always know which sizes are left.',
+    points: [
+      ['Size and colour stock', 'Every design with its size and colour matrix, so you see exactly what is left.'],
+      ['Piece labels with barcodes', 'Print labels with design, size, colour, barcode and your coded price.'],
+      ['Scan and bill', 'Counter or wholesale billing by scanning, with GST and HSN filled in.'],
+      ['Sets and bundles', 'Sell a kurta set, a size bundle or a single piece — stock stays right for each piece.'],
+      ['Returns and exchanges', 'Take back a piece and stock and accounts adjust automatically.'],
+      ['Receipts on WhatsApp', 'Send invoices and receipts to the customer’s WhatsApp.'],
+    ],
+    featuresTitle: 'Made for garment businesses',
+    features: [
+      'Readymade garment shops', 'Kurti and ethnic wear', 'Kids wear and menswear', 'Garment wholesalers',
+      'Size / colour matrix', 'Barcode piece labels', 'Counter (POS) billing', 'Customer price lists',
+      'Sets and bundles', 'Multi-shop stock', 'GST invoices', 'Owner app',
+    ],
+    faq: [
+      { q: 'What is the best billing software for a garment shop?', a: 'Look for size and colour stock, barcode labels, fast counter billing and GST invoices in one place. DhagaBook adds wholesale features too — price lists, agents and bundles — so it grows with your business.' },
+      { q: 'Can I print barcode labels for my clothes?', a: 'Yes. Piece labels print with design, size or colour, an EAN-13 barcode and your coded price, ready to scan.' },
+      { q: 'Does it work for both retail and wholesale?', a: 'Yes. Counter sales and wholesale orders share one stock, and each customer can have their own price list.' },
+      { q: 'How much does it cost?', a: 'Plans start at ₹39,999 per year + GST, with 5 users and every feature included.' },
+    ],
+    related: ['/textile-software', '/pos-billing-software', '/saree-software', '/kapda-billing-software'],
+  },
+
+  '/saree-software': {
+    kind: 'solution',
+    group: 'textile',
+    meta: {
+      title: 'Saree & Dress Material Wholesale Software | DhagaBook',
+      description: 'Software for saree and dress material wholesalers and manufacturers: design-wise stock, sets, bundles in bags, coded-price labels, agents, LR and GST billing.',
+    },
+    pill: 'Saree & dress material software',
+    h1: 'Software for saree and',
+    accent: 'dress material wholesalers',
+    lead: 'Saree and dress material trade runs on designs, catalogues, bundles, agents and transport. DhagaBook was built with Gujarat wholesalers to handle exactly that — from the day a design is made to the day the party pays.',
+    points: [
+      ['Design and catalogue stock', 'Every design with its colours and pieces, and stock you can trust.'],
+      ['Bundles packed in bags', 'One bag is one bundle. See bags in stock, free and to pack, rack by rack.'],
+      ['Coded-price labels', 'Piece and bag labels with design, barcode and your secret price code.'],
+      ['Party-wise rates', 'Different rates for each party or market, picked up on every order.'],
+      ['Agents on every party', 'Commission by party, category or design, earned when the party pays.'],
+      ['Dispatch and LR', 'Transport, LR number and parcels on the delivery and the bill.'],
+    ],
+    featuresTitle: 'For every saree and dress material business',
+    features: [
+      'Saree wholesalers', 'Dress material traders', 'Saree manufacturers', 'Catalogue sellers',
+      'Design-wise stock', 'Bags and racks', 'Barcode labels', 'Agent commission',
+      'Kasar and vatav', 'WhatsApp catalogue', 'Online store', 'GST invoices with HSN',
+    ],
+    faq: [
+      { q: 'Can I manage saree stock design-wise?', a: 'Yes. Each design is created once with its colours and pieces, and DhagaBook tracks every piece, set and bundle under that design.' },
+      { q: 'Can I send my catalogue to buyers?', a: 'Yes. Sync designs to your WhatsApp catalogue and online store, and send product showcases with offers to buyers.' },
+      { q: 'Is it used in Surat?', a: 'Yes. DhagaBook follows how the Surat and Ahmedabad cloth markets work — bundles, agents, transport, kasar and vatav.' },
+    ],
+    related: ['/textile-software', '/surat', '/textile-agent-commission-software', '/textile-wholesale-software'],
+  },
+
+  '/textile-wholesale-software': {
+    kind: 'solution',
+    group: 'textile',
+    meta: {
+      title: 'Cloth Wholesale & Textile Trading Software | DhagaBook',
+      description: 'Textile trading software for cloth wholesalers and fabric traders: party-wise rates, stock, agents, transport, payments with kasar / vatav, GST and WhatsApp.',
+    },
+    pill: 'Textile trading software',
+    h1: 'Textile trading software for',
+    accent: 'cloth wholesalers and traders',
+    lead: 'Buying from mills and manufacturers, selling to retailers across India through agents and transport — DhagaBook connects every step, so purchase, stock, sales, payments and commission always match.',
+    points: [
+      ['Purchase from suppliers', 'Purchase orders and bills from mills and manufacturers, linked to stock.'],
+      ['Party-wise price lists', 'Each buyer gets their own rates automatically.'],
+      ['Agents and commission', 'Agent on each party and order, with statements and payouts.'],
+      ['Payments the trade way', 'Receive against the oldest bills, with kasar, vatav and advances.'],
+      ['Who owes you', 'Party-wise outstanding and ageing, with WhatsApp reminders.'],
+      ['Transport and LR', 'Dispatch details printed on every bill.'],
+    ],
+    featuresTitle: 'What textile traders use',
+    features: [
+      'Fabric and cloth stock', 'Purchase bills', 'Party-wise rates', 'Agent commission',
+      'Kasar / vatav', 'Outstanding and ageing', 'Payment reminders', 'LR and transport',
+      'Barcode labels', 'Multi-company', 'GST reports', 'Mobile app',
+    ],
+    faq: [
+      { q: 'Is DhagaBook good for fabric traders?', a: 'Yes. Purchase, stock, party-wise selling, agents, payments with kasar and vatav, and GST are all built in for textile trading.' },
+      { q: 'Can I run more than one firm?', a: 'Yes. Run several firms from one login, each with its own books and document numbers.' },
+    ],
+    related: ['/textile-software', '/saree-software', '/textile-agent-commission-software', '/ahmedabad'],
+  },
+
+  '/textile-agent-commission-software': {
+    kind: 'solution',
+    group: 'textile',
+    meta: {
+      title: 'Textile Agent & Broker Commission Software | DhagaBook',
+      description: 'Manage dalal / agent commission in textile: commission % by party, category or design, earned when the party pays, with agent statements and payouts.',
+    },
+    pill: 'Agent (dalal) commission',
+    h1: 'Agent and broker commission,',
+    accent: 'worked out for you',
+    lead: 'In textile, most sales come through agents (dalals). DhagaBook puts the agent on every party and order, works out commission only on money actually received, and gives every agent a clear statement.',
+    points: [
+      ['Agent on every party', 'Set the agent once on the party and it follows every order and invoice.'],
+      ['Commission rules', 'Default % per agent, with rules by customer, category or design.'],
+      ['Earned on payment', 'Commission is earned only when the party pays — no manual tracking.'],
+      ['Agent statements', 'Sales, payments received and commission due, agent by agent.'],
+      ['Payouts', 'Record commission payments and see what is still due.'],
+      ['Agent-wise sales', 'See which agent brings which parties and how much business.'],
+    ],
+    featuresTitle: 'Commission features',
+    features: [
+      'Agents and sub-agents', 'Commission % per agent', 'Rules by party / category / design', 'Earned on receipt',
+      'Agent statements', 'Commission payouts', 'Agent-wise sales report', 'Outstanding by agent',
+      'Works with GST invoices', 'WhatsApp statements', 'Multi-company', 'Mobile app',
+    ],
+    faq: [
+      { q: 'Can commission be different for different parties?', a: 'Yes. Set a default % per agent and add rules by customer, product category or design.' },
+      { q: 'Is commission calculated on invoice or on payment?', a: 'On payment. Commission is earned as the party pays, so agents are paid only for money that has come in.' },
+      { q: 'Can I give agents their statement?', a: 'Yes. Agent statements show sales, payments and commission, and can be sent as PDF or on WhatsApp.' },
+    ],
+    related: ['/textile-software', '/textile-wholesale-software', '/saree-software', '/surat'],
+  },
+
+  '/vastra-app-alternative': {
+    kind: 'solution',
+    group: 'compare',
+    meta: {
+      title: 'Vastra App Alternative for Textile Businesses | DhagaBook',
+      description: 'Comparing textile ERP apps? DhagaBook adds bundles in bags, coded-price labels, agent commission, full GST accounting and WhatsApp automation. Free demo.',
+    },
+    pill: 'Textile ERP comparison',
+    h1: 'Choosing a textile ERP?',
+    accent: 'See what DhagaBook covers',
+    lead: 'Textile businesses compare apps like Vastra and DhagaBook when they move off registers and Excel. Here is what DhagaBook covers in one system, so you can compare it against your own checklist.',
+    points: [
+      ['Design to bundle', 'Bundle Builder creates every piece, set and bundle with its own barcode.'],
+      ['Bags and racks', 'Bundles packed in bags, tracked rack by rack and scanned on dispatch.'],
+      ['Coded-price labels', 'Piece and bag labels with your price code.'],
+      ['Agent commission', 'Earned on payment, with agent statements and payouts.'],
+      ['Complete accounts', 'Ledgers, bank reconciliation, P&L, balance sheet and GST reports — no separate accounting software.'],
+      ['WhatsApp Business API', 'Catalogue, invoices, reminders and campaigns on the official API.'],
+    ],
+    featuresTitle: 'Your textile checklist',
+    features: [
+      'Design-wise stock', 'Size / colour matrix', 'Sets and bundles', 'Bags and racks',
+      'Barcode labels', 'Party-wise rates', 'Agent commission', 'LR and transport',
+      'GST accounting', 'Manufacturing & BOM', 'WhatsApp catalogue', 'Android and iPhone app',
+    ],
+    faq: [
+      { q: 'What should I compare in textile software?', a: 'Check design and size stock, bundles, barcode labels, agent commission, dispatch details, full GST accounting, WhatsApp and the mobile app — and whether the vendor will set it up and train your team.' },
+      { q: 'Can I try DhagaBook before buying?', a: 'Yes. Book a free demo and we show DhagaBook with your own kind of designs and parties.' },
+    ],
+    related: ['/textile-software', '/saree-software', '/garment-billing-software', '/tally-alternative'],
+  },
+
+  '/odoo-alternative': {
+    kind: 'solution',
+    group: 'compare',
+    meta: {
+      title: 'Odoo Alternative: Ready-made ERP for Indian SMEs | DhagaBook',
+      description: 'Want ERP without a long implementation project? DhagaBook is ready-made for Indian GST, trade and textile, at one yearly price with local setup in Gujarat.',
+    },
+    pill: 'Odoo alternative',
+    h1: 'ERP without the',
+    accent: 'implementation project',
+    lead: 'General-purpose ERPs like Odoo can do almost anything — after a partner configures and customises them for you. DhagaBook comes ready-made for how Indian businesses trade, at one yearly price that includes every module, with setup and training by our own team in Ahmedabad.',
+    points: [
+      ['Ready on day one', 'GST, kasar / vatav, agents, transport and textile bundles are already built in — not a customisation to pay for.'],
+      ['One price, every module', 'Billing, inventory, accounting, CRM, manufacturing, payroll and WhatsApp in one yearly plan with 5 users.'],
+      ['No partner hunting', 'We set up, import your data, train your team and support you directly, 8 AM to 8 PM.'],
+      ['Made for Indian trade', 'Payments against the oldest bills, party-wise rates, LR details and reports your CA expects.'],
+      ['Textile-ready', 'Designs, sets, bundles, bags, coded-price labels and agent commission.'],
+      ['Gujarati and Hindi support', 'Training and help in the language your team speaks.'],
+    ],
+    featuresTitle: 'Included without customisation',
+    features: [
+      'GST invoices and reports', 'Kasar / vatav in payments', 'Agent commission', 'Party-wise price lists',
+      'LR and transport details', 'Bundles, bags and labels', 'Multi-company books', 'Manufacturing & BOM',
+      'WhatsApp Business API', 'Mobile app for owners', 'Data import from Tally / Excel', 'Local setup and training',
+    ],
+    faq: [
+      { q: 'Why choose DhagaBook instead of Odoo?', a: 'Choose DhagaBook if you want an ERP that already fits Indian trade and textile on day one, at one fixed yearly price, with setup and support from one local team — instead of a configuration and customisation project.' },
+      { q: 'How long does DhagaBook take to set up?', a: 'Most businesses are billing within days. We import parties, items and opening balances and train your team.' },
+      { q: 'Is there a per-module charge?', a: 'No. Every plan includes all modules and 5 users, from ₹39,999 per year + GST, plus a one-time setup fee.' },
+      { q: 'Do you support businesses in Ahmedabad and Surat?', a: 'Yes. Our office is in Ahmedabad and we support businesses across Gujarat and India, in person or online.' },
+    ],
+    related: ['/erp-software', '/ahmedabad', '/surat', '/textile-software'],
+  },
+
+  '/kapda-billing-software': {
+    kind: 'solution',
+    group: 'textile',
+    lang: 'hi',
+    meta: {
+      title: 'कपड़ा दुकान बिलिंग सॉफ्टवेयर | Kapda Billing Software',
+      description: 'कपड़ा दुकान और टेक्सटाइल होलसेल के लिए बिलिंग सॉफ्टवेयर: GST बिल, बारकोड, साइज़-कलर स्टॉक, एजेंट कमीशन, WhatsApp बिल और मोबाइल ऐप। फ्री डेमो।',
+    },
+    pill: 'कपड़ा बिलिंग सॉफ्टवेयर',
+    h1: 'कपड़ा दुकान और होलसेल के लिए',
+    accent: 'बिलिंग सॉफ्टवेयर',
+    lead: 'DhagaBook से GST बिल, स्टॉक, एजेंट कमीशन और हिसाब-किताब एक ही जगह रखें। हर पीस पर बारकोड, हर पार्टी का अलग रेट, और बिल सीधे ग्राहक के WhatsApp पर।',
+    points: [
+      ['सेकंड में GST बिल', 'पार्टी और आइटम चुनें — HSN, CGST / SGST / IGST अपने आप।'],
+      ['साइज़ और कलर स्टॉक', 'हर डिज़ाइन का साइज़-कलर वाइज़ स्टॉक, हर पीस का अपना बारकोड।'],
+      ['सेट, बंडल और बोरी', 'सेट और बंडल एक साथ बनाएं, बोरी (बैग) में पैक करें और रैक वाइज़ देखें।'],
+      ['एजेंट (दलाल) कमीशन', 'हर पार्टी पर एजेंट, कमीशन सिर्फ़ पेमेंट आने पर।'],
+      ['कसर, वटाव और उधारी', 'पुराने बिल से पहले पेमेंट जमा, कसर-वटाव के साथ। बकाया पर WhatsApp रिमाइंडर।'],
+      ['मोबाइल ऐप', 'आज की बिक्री, वसूली, बकाया और स्टॉक फ़ोन पर।'],
+    ],
+    featuresTitle: 'कपड़ा व्यापार के लिए सब कुछ',
+    features: [
+      'साड़ी और ड्रेस मटीरियल', 'रेडीमेड गारमेंट', 'कपड़ा होलसेल', 'GST बिल और रिपोर्ट',
+      'बारकोड लेबल', 'पार्टी वाइज़ रेट', 'एजेंट कमीशन', 'LR और ट्रांसपोर्ट',
+      'WhatsApp बिल और कैटलॉग', 'लेजर और खाता', 'कई कंपनी एक लॉगिन', 'Android और iPhone ऐप',
+    ],
+    faq: [
+      { q: 'क्या DhagaBook कपड़ा दुकान के लिए सही है?', a: 'हाँ। साइज़-कलर स्टॉक, बारकोड लेबल, काउंटर बिलिंग और GST बिल — सब कपड़ा व्यापार के हिसाब से बना है। होलसेल के लिए बंडल, एजेंट और पार्टी वाइज़ रेट भी हैं।' },
+      { q: 'क्या हिंदी में सपोर्ट मिलता है?', a: 'हाँ। डेमो, सेटअप और ट्रेनिंग हिंदी, गुजराती या अंग्रेज़ी में, सुबह 8 से रात 8 बजे तक।' },
+      { q: 'कीमत कितनी है?', a: 'प्लान ₹39,999 प्रति वर्ष + GST से शुरू, 5 यूज़र और सभी फ़ीचर शामिल।' },
+    ],
+    related: ['/gu/textile-software', '/textile-software', '/garment-billing-software', '/surat'],
+  },
+
+  '/gu/textile-software': {
+    kind: 'solution',
+    group: 'textile',
+    lang: 'gu',
+    meta: {
+      title: 'કાપડ બિલિંગ સોફ્ટવેર | ટેક્સટાઇલ સોફ્ટવેર – DhagaBook',
+      description: 'કાપડના વેપારીઓ માટે ટેક્સટાઇલ સોફ્ટવેર: GST બિલ, ડિઝાઇન વાઇઝ સ્ટોક, બંડલ, બારકોડ લેબલ, દલાલી, કસર-વટાવ, WhatsApp અને મોબાઇલ એપ. ફ્રી ડેમો.',
+    },
+    pill: 'ટેક્સટાઇલ સોફ્ટવેર',
+    h1: 'કાપડના વેપાર માટે',
+    accent: 'બિલિંગ અને હિસાબ સોફ્ટવેર',
+    lead: 'DhagaBook અમદાવાદમાં, ગુજરાતના કાપડ વેપારીઓ સાથે બનાવેલું છે. GST બિલ, સ્ટોક, દલાલી અને હિસાબ — બધું એક જ જગ્યાએ, કમ્પ્યુટર અને મોબાઇલ બંને પર.',
+    points: [
+      ['સેકન્ડમાં GST બિલ', 'પાર્ટી અને આઇટમ પસંદ કરો — HSN અને GST આપોઆપ.'],
+      ['ડિઝાઇન વાઇઝ સ્ટોક', 'દરેક ડિઝાઇનના રંગ અને સાઇઝ, દરેક પીસનો પોતાનો બારકોડ.'],
+      ['સેટ, બંડલ અને બેગ', 'બંડલ બેગમાં પેક કરો, રેક વાઇઝ સ્ટોક જુઓ અને ડિસ્પેચ વખતે સ્કેન કરો.'],
+      ['દલાલી (એજન્ટ કમિશન)', 'દરેક પાર્ટી પર એજન્ટ, કમિશન ફક્ત પેમેન્ટ આવે ત્યારે.'],
+      ['કસર, વટાવ અને ઉઘરાણી', 'જૂના બિલ સામે પહેલા પેમેન્ટ, કસર-વટાવ સાથે. બાકી પર WhatsApp રીમાઇન્ડર.'],
+      ['મોબાઇલ એપ', 'આજનું વેચાણ, ઉઘરાણી, બાકી અને સ્ટોક ફોન પર.'],
+    ],
+    featuresTitle: 'કાપડના દરેક વેપાર માટે',
+    features: [
+      'સાડી અને ડ્રેસ મટીરિયલ', 'રેડીમેડ ગારમેન્ટ', 'કાપડ હોલસેલ', 'GST બિલ અને રિપોર્ટ',
+      'બારકોડ લેબલ', 'પાર્ટી વાઇઝ ભાવ', 'દલાલી', 'LR અને ટ્રાન્સપોર્ટ',
+      'WhatsApp બિલ અને કેટલોગ', 'ખાતાવહી અને લેજર', 'એક લોગિનમાં અનેક કંપની', 'Android અને iPhone એપ',
+    ],
+    faq: [
+      { q: 'શું DhagaBook સુરત અને અમદાવાદના કાપડ બજાર માટે છે?', a: 'હા. ડિઝાઇન, સેટ, બંડલ, બેગ, કોડેડ ભાવવાળા લેબલ, દલાલી અને LR — બધું ગુજરાતના કાપડ વેપારીઓ સાથે બનાવેલું છે.' },
+      { q: 'શું ગુજરાતીમાં સપોર્ટ મળે છે?', a: 'હા. ડેમો, સેટઅપ અને ટ્રેનિંગ ગુજરાતી, હિન્દી કે અંગ્રેજીમાં, સવારે 8 થી રાત્રે 8 સુધી.' },
+      { q: 'કિંમત કેટલી છે?', a: 'પ્લાન ₹39,999 પ્રતિ વર્ષ + GST થી શરૂ, 5 યુઝર અને બધા ફીચર સાથે.' },
+    ],
+    related: ['/kapda-billing-software', '/textile-software', '/surat', '/ahmedabad'],
+  },
+
   // ---------------- Locations ----------------
   '/ahmedabad': {
     kind: 'location',
     city: 'Ahmedabad',
     meta: {
-      title: 'Billing & Accounting Software in Ahmedabad | DhagaBook',
-      description: 'GST billing, accounting, inventory and WhatsApp software for Ahmedabad businesses, from Naroda to SG Highway. Office in Nava Naroda. Book a free demo.',
+      title: 'ERP, Billing & Accounting Software in Ahmedabad | DhagaBook',
+      description: 'ERP, GST billing, accounting and inventory software for Ahmedabad businesses, from Naroda to SG Highway. Local office in Nava Naroda. Book a free demo.',
     },
     pill: 'Ahmedabad, Gujarat',
     h1: 'Billing and accounting software',
@@ -138,6 +807,7 @@ export const LANDING = {
       ],
     },
     faq: [
+      { q: 'Is DhagaBook an ERP?', a: 'Yes. DhagaBook is a complete ERP — sales, purchase, inventory, manufacturing, accounting, CRM, payroll and WhatsApp in one system — ready-made for Indian businesses and set up by our team in Ahmedabad, with no long implementation project.' },
       { q: 'Where is the DhagaBook office in Ahmedabad?', a: 'Laxmi Sky City, Dastan Circle, Opp. Sardar Party Plot, Kathwada Road, Nava Naroda, Ahmedabad 382330. Call before visiting so the right person is free.' },
       { q: 'Can I see a demo in Ahmedabad?', a: 'Yes. Book a free demo at our Nava Naroda office or online, and we will show DhagaBook with examples from your type of business.' },
       { q: 'Do you support textile traders in Ahmedabad’s cloth markets?', a: 'Yes. DhagaBook handles designs, sets, bundles, bags, coded price labels and agent commission — the way wholesalers in New Cloth Market, Maskati Market and Panchkuva work.' },
@@ -150,7 +820,7 @@ export const LANDING = {
     kind: 'location',
     city: 'Gandhinagar',
     meta: {
-      title: 'Billing & Accounting Software in Gandhinagar | DhagaBook',
+      title: 'ERP & Billing Software in Gandhinagar | DhagaBook',
       description: 'GST billing, accounting, inventory and WhatsApp automation for Gandhinagar businesses — Kalol, Sargasan, Kudasan, GIDC and GIFT City. Free demo.',
     },
     pill: 'Gandhinagar, Gujarat',
@@ -190,8 +860,8 @@ export const LANDING = {
     kind: 'location',
     city: 'Surat',
     meta: {
-      title: 'Textile Billing Software in Surat | DhagaBook',
-      description: 'Textile billing and accounting software for Surat saree, dress material and fabric wholesalers on Ring Road — bundles, barcode labels, agents and GST.',
+      title: 'Textile ERP & Billing Software in Surat | DhagaBook',
+      description: 'Textile ERP, billing and accounting software for Surat saree, dress material and fabric wholesalers on Ring Road — bundles, labels, agents and GST.',
     },
     pill: 'Surat, Gujarat',
     h1: 'Textile billing software',
@@ -218,6 +888,7 @@ export const LANDING = {
       ],
     },
     faq: [
+      { q: 'Is there a textile ERP for Surat?', a: 'Yes. DhagaBook is a textile ERP built with Gujarat wholesalers — designs, sets, bundles, bags, labels, agents, accounts and WhatsApp in one system, set up and supported in Gujarati and Hindi.' },
       { q: 'Is DhagaBook made for the Surat textile trade?', a: 'Yes. Designs, sets, bundles, bags, coded price labels, agent commission and LR details were built with Gujarat textile wholesalers.' },
       { q: 'Can I get support in Surat?', a: 'Yes. Demos, setup and training are done online, in Gujarati or Hindi, with phone and WhatsApp support from 8 AM to 8 PM.' },
       { q: 'Can I send my catalog to buyers on WhatsApp?', a: 'Yes. Your products can be synced to the WhatsApp catalog, and you can send product showcases with offers to buyers from DhagaBook.' },
@@ -231,7 +902,7 @@ export const LANDING = {
     city: 'Gujarat',
     region: true,
     meta: {
-      title: 'Business & Accounting Software in Gujarat | DhagaBook',
+      title: 'ERP & Accounting Software in Gujarat | DhagaBook',
       description: 'GST billing, accounting, inventory, textile and WhatsApp software for businesses across Gujarat — Ahmedabad, Surat, Gandhinagar, Vadodara, Rajkot and more.',
     },
     pill: 'Made in Gujarat',
@@ -265,6 +936,82 @@ export const LANDING = {
     ],
     related: ['/ahmedabad', '/surat', '/gandhinagar', '/textile-software'],
   },
+  '/rajkot': {
+    kind: 'location',
+    city: 'Rajkot',
+    meta: {
+      title: 'ERP & Billing Software in Rajkot | DhagaBook',
+      description: 'GST billing, inventory, manufacturing and accounting software for Rajkot factories, traders and distributors. Support in Gujarati. Book a free online demo.',
+    },
+    pill: 'Rajkot, Gujarat',
+    h1: 'Billing and accounting software',
+    accent: 'for Rajkot businesses',
+    lead: 'From engineering units in the GIDC estates to traders and distributors in the city, Rajkot businesses use DhagaBook to bill, track stock and production, and keep their books ready for their CA.',
+    points: [
+      ['Manufacturing and BOM', 'Bill of materials, production orders and raw material stock for small factories.'],
+      ['Distributors and dealers', 'Party-wise rates, godowns, dispatch details and outstanding follow-up.'],
+      ['GST and accounts', 'GST invoices, ledgers, bank reconciliation and reports your CA needs.'],
+      ['Support in Gujarati', 'Online demo, setup and training in Gujarati, 8 AM to 8 PM.'],
+    ],
+    featuresTitle: 'Popular with Rajkot businesses',
+    features: [
+      'Manufacturing & BOM', 'Raw material stock', 'GST billing', 'Party-wise price lists',
+      'Multi-godown inventory', 'Outstanding and reminders', 'WhatsApp invoices', 'Owner mobile app',
+    ],
+    local: {
+      title: 'Serving Rajkot and Saurashtra',
+      text: 'We support businesses across Rajkot and Saurashtra online, with our office in Ahmedabad.',
+      groups: [
+        ['Industrial areas', ['Aji GIDC', 'Metoda GIDC', 'Shapar-Veraval', 'Lodhika GIDC', 'Bhaktinagar', 'Kotharia']],
+        ['Nearby hubs', ['Morbi', 'Jetpur', 'Gondal', 'Jamnagar', 'Junagadh', 'Dhoraji', 'Upleta']],
+      ],
+    },
+    faq: [
+      { q: 'Do you support Rajkot businesses?', a: 'Yes. Demos, setup, training and support are online, in Gujarati, Hindi or English.' },
+      { q: 'Is DhagaBook suitable for engineering units?', a: 'Yes. Multi-level bills of materials, production orders, raw material consumption and costing are included.' },
+      { q: 'How much does it cost?', a: 'Plans start at ₹39,999 per year + GST, with 5 users and every feature included.' },
+    ],
+    related: ['/manufacturing-software', '/gujarat', '/ahmedabad', '/billing-software'],
+  },
+
+  '/vadodara': {
+    kind: 'location',
+    city: 'Vadodara',
+    meta: {
+      title: 'GST Billing & ERP Software in Vadodara | DhagaBook',
+      description: 'GST billing, inventory, accounting and ERP software for Vadodara traders, distributors and manufacturers. Gujarati support and a free online demo.',
+    },
+    pill: 'Vadodara, Gujarat',
+    h1: 'GST billing and ERP software',
+    accent: 'for Vadodara businesses',
+    lead: 'Vadodara’s traders, distributors and GIDC manufacturers use DhagaBook to run billing, stock, purchase, production and accounts in one online system — with a mobile app for the owner.',
+    points: [
+      ['One system for everything', 'Sales, purchase, inventory, production and accounts, connected.'],
+      ['Distributors and stockists', 'Price lists, godowns, dispatch and receivables follow-up.'],
+      ['Manufacturing', 'Bill of materials, production orders and costing.'],
+      ['Local support', 'Online demo, setup and training in Gujarati, Hindi or English.'],
+    ],
+    featuresTitle: 'Popular with Vadodara businesses',
+    features: [
+      'GST billing', 'Inventory & godowns', 'Purchase orders', 'Manufacturing & BOM',
+      'Accounting & GST reports', 'CRM and follow-ups', 'WhatsApp automation', 'Mobile app',
+    ],
+    local: {
+      title: 'Serving Vadodara and central Gujarat',
+      text: 'We set up and support businesses in Vadodara and nearby towns online, with our office in Ahmedabad.',
+      groups: [
+        ['Industrial areas', ['Makarpura GIDC', 'Por GIDC', 'Savli GIDC', 'Waghodia GIDC', 'Nandesari GIDC', 'Padra']],
+        ['Nearby', ['Anand', 'Nadiad', 'Bharuch', 'Ankleshwar', 'Halol', 'Godhra']],
+      ],
+    },
+    faq: [
+      { q: 'Do you support Vadodara businesses?', a: 'Yes. Everything — demo, setup, training and support — is available online.' },
+      { q: 'Which businesses use DhagaBook?', a: 'Traders, distributors, manufacturers, retailers and textile businesses that need billing, stock and accounts together.' },
+      { q: 'How much does it cost?', a: 'Plans start at ₹39,999 per year + GST, with 5 users and every feature included.' },
+    ],
+    related: ['/erp-software', '/gujarat', '/ahmedabad', '/inventory-management-software'],
+  },
+
 };
 
 export const LANDING_NAMES = {
@@ -275,4 +1022,26 @@ export const LANDING_NAMES = {
   '/gandhinagar': 'Gandhinagar',
   '/surat': 'Surat',
   '/gujarat': 'Gujarat',
+  '/billing-software': 'GST billing software',
+  '/inventory-management-software': 'Inventory software',
+  '/erp-software': 'ERP software',
+  '/pos-billing-software': 'POS billing software',
+  '/billing-app': 'Billing app',
+  '/manufacturing-software': 'Manufacturing software',
+  '/garment-billing-software': 'Garment billing software',
+  '/saree-software': 'Saree software',
+  '/textile-wholesale-software': 'Textile trading software',
+  '/textile-agent-commission-software': 'Agent commission',
+  '/kapda-billing-software': 'कपड़ा बिलिंग सॉफ्टवेयर',
+  '/gu/textile-software': 'કાપડ બિલિંગ સોફ્ટવેર',
+  '/tally-alternative': 'Tally alternative',
+  '/vyapar-alternative': 'Vyapar alternative',
+  '/mybillbook-alternative': 'myBillBook alternative',
+  '/zoho-books-alternative': 'Zoho Books alternative',
+  '/busy-alternative': 'Busy alternative',
+  '/khatabook-alternative': 'Khatabook alternative',
+  '/vastra-app-alternative': 'Vastra app alternative',
+  '/odoo-alternative': 'Odoo alternative',
+  '/rajkot': 'Rajkot',
+  '/vadodara': 'Vadodara',
 };
