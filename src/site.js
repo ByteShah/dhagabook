@@ -206,6 +206,26 @@ export const ROUTES = {
       'Book a free, personalised DhagaBook demo or buy a plan. We call you, show the modules that matter to your business and help you get set up.',
     schema: () => [organization(), breadcrumb('Book a demo', '/contact')],
   },
+  '/terms': {
+    title: 'Terms & Conditions | DhagaBook',
+    description: 'The terms for using DhagaBook: plans, yearly billing, GST, user and device limits, your data, renewals and support.',
+    schema: () => [organization(), breadcrumb('Terms & Conditions', '/terms')],
+  },
+  '/privacy': {
+    title: 'Privacy Policy | DhagaBook',
+    description: 'What data DhagaBook collects on the website, web app and mobile app, how it is used and protected, and your rights under the DPDP Act.',
+    schema: () => [organization(), breadcrumb('Privacy Policy', '/privacy')],
+  },
+  '/refund-policy': {
+    title: 'Refund & Cancellation Policy | DhagaBook',
+    description: 'How to cancel a DhagaBook plan, when refunds apply, how they are paid and how the software is delivered.',
+    schema: () => [organization(), breadcrumb('Refund & Cancellation Policy', '/refund-policy')],
+  },
+  '/delete-account': {
+    title: 'Delete Your Account | DhagaBook',
+    description: 'How to ask DhagaBook to delete your account, a user or your personal data, what is removed and how long it takes.',
+    schema: () => [organization(), breadcrumb('Delete account', '/delete-account')],
+  },
 };
 
 export const NOT_FOUND = {

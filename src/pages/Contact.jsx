@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Check, Mail, Pin, Clock, Chat, Phone } from '../components/Icons.jsx';
 import { SITE, PLANS } from '../site.js';
 import { track } from '../analytics.js';
@@ -293,6 +293,9 @@ export default function Contact() {
                 {status === 'sending' ? 'Sending…' : intent === 'buy' ? 'Submit purchase request' : 'Book my free demo'}
               </button>
               <p className="form-foot">We’ll call you back at a time that suits you.</p>
+              <p className="form-legal">
+                By submitting, you agree to our <Link to="/terms">Terms</Link> and <Link to="/privacy">Privacy Policy</Link>.
+              </p>
             </form>
           )}
         </div>

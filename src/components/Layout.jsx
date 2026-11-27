@@ -118,6 +118,13 @@ function Footer() {
                 <a href={`mailto:${SITE.email}`} onClick={() => track('email_click', { location: 'footer' })}>{SITE.email}</a>
                 <address>{SITE.address}</address>
               </div>
+              <div className="footer-col">
+                <h2 className="footer-title">Legal</h2>
+                <Link to="/terms">Terms &amp; Conditions</Link>
+                <Link to="/privacy">Privacy Policy</Link>
+                <Link to="/refund-policy">Refund &amp; Cancellation</Link>
+                <Link to="/delete-account">Delete account</Link>
+              </div>
             </div>
           </div>
           <div className="footer-bottom">
