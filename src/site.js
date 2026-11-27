@@ -86,7 +86,7 @@ const organization = () => ({
   '@id': `${SITE.url}/#organization`,
   name: SITE.name,
   url: `${SITE.url}/`,
-  logo: `${SITE.url}/favicon.svg`,
+  logo: `${SITE.url}/icon-512.png`,
   description: 'Business management software built for India.',
   address: {
     '@type': 'PostalAddress',
