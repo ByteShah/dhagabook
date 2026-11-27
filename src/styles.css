@@ -1219,7 +1219,7 @@ select.input { padding: 0 12px; }
 .fx-hero { padding-bottom: 56px; }
 
 /* Gateways: five jharokha arches that jump to each chapter */
-.gateways { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+.gateways { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
 .gateway {
   position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;
   padding: 40px 14px 20px; border-radius: 999px 999px 22px 22px; background: var(--white); border: 1px solid var(--line);
@@ -1346,7 +1346,7 @@ select.input { padding: 0 12px; }
 .is-active .pv-attend-row i { animation: pop .35s var(--ease) backwards; animation-delay: calc(var(--i) * 25ms); }
 
 @media (max-width: 1100px) {
-  .gateways { grid-template-columns: repeat(5, minmax(150px, 1fr)); overflow-x: auto; scroll-snap-type: x mandatory; padding-top: 10px; padding-bottom: 14px; scrollbar-width: none; }
+  .gateways { grid-template-columns: repeat(8, minmax(150px, 1fr)); overflow-x: auto; scroll-snap-type: x mandatory; padding-top: 10px; padding-bottom: 14px; scrollbar-width: none; }
   .gateways::-webkit-scrollbar { display: none; }
   .gateway { scroll-snap-align: start; }
   .chapter-tabs { justify-content: flex-start; }
@@ -1362,7 +1362,7 @@ select.input { padding: 0 12px; }
 }
 @media (max-width: 600px) {
   .fx-hero { padding-bottom: 32px; }
-  .gateways { grid-template-columns: repeat(5, 132px); gap: 10px; margin-top: 16px; }
+  .gateways { grid-template-columns: repeat(8, 132px); gap: 10px; margin-top: 16px; }
   .gateway { padding: 32px 10px 16px; }
   .gateway-num { top: 12px; font-size: 13px; }
   .gateway-icon { width: 48px; height: 48px; }
@@ -1570,4 +1570,39 @@ select.input { padding: 0 12px; }
   .legal-toc { columns: 1; padding: 16px 16px 16px 36px; margin-bottom: 28px; }
   .legal-section h2 { font-size: 18px; }
   .legal-section { padding-bottom: 20px; margin-bottom: 20px; }
+}
+
+/* ---------- Feature previews: textile, WhatsApp, mobile ---------- */
+.pv-bundle { display: flex; flex-direction: column; gap: 12px; }
+.pv-bundle-head { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-radius: 10px; background: var(--green); color: var(--white); font-weight: 700; }
+.pv-bundle-head b { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, .18); }
+.pv-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.pv-chips span { padding: 4px 10px; border-radius: 8px; background: var(--cream); border: 1px solid var(--line); font-weight: 700; font-size: 12px; }
+.pv-chips i { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 0 0 1px var(--line); }
+.pv-bags { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.pv-bag { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border-radius: 10px; background: var(--mint); border: 1px dashed rgba(11, 107, 82, .35); }
+.pv-bag span { font-size: 11.5px; color: var(--body); }
+.pv-bag.is-todo { background: var(--sand); border-color: rgba(232, 137, 28, .5); }
+.pv-wa { display: flex; flex-direction: column; gap: 8px; background: #EFE7DC; }
+.pv-wa-msg { align-self: flex-start; max-width: 85%; display: flex; flex-direction: column; gap: 4px; padding: 8px 12px; border-radius: 4px 12px 12px 12px; background: var(--white); box-shadow: 0 1px 1px rgba(0, 0, 0, .08); font-weight: 600; }
+.pv-wa-msg small { font-weight: 500; color: var(--muted); font-size: 11.5px; }
+.pv-wa-msg.is-in { align-self: flex-end; border-radius: 12px 4px 12px 12px; background: #D9FDD3; }
+.pv-wa-btn { margin-top: 2px; padding: 5px 0; border-top: 1px solid var(--line); text-align: center; color: #1F7AE0; font-weight: 700; font-size: 12.5px; }
+.pv-mob { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.pv-mob-tile { display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 12px; background: var(--mint); }
+.pv-mob-tile:first-child { grid-column: 1 / -1; background: var(--green); color: var(--white); }
+.pv-mob-tile:first-child span { color: rgba(255, 255, 255, .8); }
+.pv-mob-tile span { font-size: 12px; color: var(--body); }
+.pv-mob-tile b { font-size: 17px; }
+.pv-mob-tile.is-due { background: var(--sand); }
+.pv-mob-tile.is-due b { color: var(--saffron-ink); }
+
+/* Footer: address on short lines, Legal beside Contact */
+.footer-cols { flex-wrap: nowrap; gap: 56px; }
+.footer-col--contact { max-width: 290px; }
+.footer-address { font-style: normal; display: flex; flex-direction: column; line-height: 1.55; }
+@media (max-width: 900px) { .footer-cols { flex-wrap: wrap; gap: 32px 48px; } }
+@media (max-width: 600px) {
+  .footer-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .footer-col--contact { grid-column: 1 / -1; order: 3; max-width: none; }
 }

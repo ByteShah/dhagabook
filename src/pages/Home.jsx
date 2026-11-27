@@ -211,7 +211,7 @@ export default function Home() {
               <Mandala className="card-mandala" />
               <span className="icon-tile icon-tile--green"><Globe size={24} color="#FFFFFF" width={1.9} /></span>
               <h3 className="h3-sm">And 30+ more features</h3>
-              <p>CRM, website and ecommerce, projects, calendar, multi-company accounting and more.</p>
+              <p>Invoices and reminders on WhatsApp, textile bundles and labels, agent commission, point of sale, CRM, online store, multi-company accounting and more.</p>
               <Link to="/features" className="text-link-light">
                 Explore all features <Arrow size={16} />
               </Link>

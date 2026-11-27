@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Cart, Box, Truck, Invoice, People, Factory, Chart, Monitor, Arrow } from './Icons.jsx';
+import { Cart, Box, Truck, Invoice, People, Factory, Chart, Monitor, Arrow, Chat } from './Icons.jsx';
 import { LogoMark } from './Logo.jsx';
 import { Mandala } from './Bits.jsx';
 import { track } from '../analytics.js';
@@ -14,6 +14,7 @@ const MODULES = [
   { id: 'hr', name: 'Employees & Payroll', Icon: People, text: 'Attendance, leave and salaries for your whole team.', links: ['accounts'] },
   { id: 'mfg', name: 'Manufacturing', Icon: Factory, text: 'Production and bills of materials that update stock automatically.', links: ['stock', 'purchase'] },
   { id: 'crm', name: 'CRM', Icon: Chart, text: 'Leads, follow-up reminders and complete customer history.', links: ['sales', 'web'] },
+  { id: 'wa', name: 'WhatsApp', Icon: Chat, text: 'Invoices, payment reminders, catalog and orders on WhatsApp.', links: ['sales', 'accounts', 'crm'] },
   { id: 'web', name: 'Website & Ecommerce', Icon: Monitor, text: 'Your online store, with orders flowing straight into sales.', links: ['sales', 'stock'] },
 ];
 

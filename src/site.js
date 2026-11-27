@@ -1,7 +1,7 @@
 // Business details and per-page SEO in one place.
 // Fill in the [PLACEHOLDER] values before going live.
 
-const EMAIL = 'hello@dhagabook.in';
+const EMAIL = 'hello@dhagabook.com';
 
 export const SITE = {
   name: 'DhagaBook',
@@ -12,6 +12,8 @@ export const SITE = {
   whatsapp: `https://wa.me/919316869720?text=${encodeURIComponent('Hi DhagaBook, I would like a free demo for my business.')}`,
   email: EMAIL,
   address: 'Laxmi Sky City, Dastan Circle, Opp. Sardar Party Plot, Kathwada Rd, Nava Naroda, Ahmedabad, Gujarat 382330',
+  // Same address split for display (footer, contact page).
+  addressLines: ['Laxmi Sky City, Dastan Circle,', 'Opp. Sardar Party Plot, Kathwada Rd,', 'Nava Naroda, Ahmedabad,', 'Gujarat 382330'],
   hours: '8:00 AM to 8:00 PM',
   taxNote: 'Prices are exclusive of GST. 18% GST is added to every invoice.',
   gstRate: 18,
@@ -151,7 +153,7 @@ export const PRICING_FAQ = [
   },
   {
     q: 'Do all plans include every feature?',
-    a: 'Yes. Every plan includes all 30+ features, including billing, inventory, purchasing, manufacturing, accounting, payroll, CRM and website.',
+    a: 'Yes. Every plan includes all 30+ features, including billing, inventory, purchasing, manufacturing, accounting, payroll, CRM, website, WhatsApp and the textile tools (bundles, bags, labels and agent commission).',
   },
   {
     q: 'What is the difference between Web and Web + App?',
@@ -160,6 +162,14 @@ export const PRICING_FAQ = [
   {
     q: 'Can I manage more than one company or location?',
     a: 'Yes. Every plan supports multiple companies and locations from a single login.',
+  },
+  {
+    q: 'Is DhagaBook made for textile and garment businesses?',
+    a: 'Yes. DhagaBook handles designs, sets and bundles, bags on racks, piece and bag labels with coded prices, customer price lists, agent commission and dispatch details such as LR number and transport — the way textile wholesalers and manufacturers work.',
+  },
+  {
+    q: 'Can I send invoices and reminders on WhatsApp?',
+    a: 'Yes. DhagaBook connects to the official WhatsApp Business API to send quotations, invoices, receipts, payment reminders, payment links and dispatch alerts, and to share your product catalog. WhatsApp message charges are set and billed by Meta.',
   },
   {
     q: 'Can I see DhagaBook before buying?',
@@ -191,7 +201,7 @@ export const ROUTES = {
   '/features': {
     title: 'Features — GST Billing, Inventory, Accounting | DhagaBook',
     description:
-      '30+ connected features: GST invoices, CRM, online store, multi-warehouse inventory, barcode, manufacturing & BOM, accounting, payroll and projects.',
+      '30+ connected features: GST invoices, textile bundles & labels, WhatsApp, agent commission, POS, inventory, barcode, manufacturing, accounting, payroll and projects.',
     schema: () => [organization(), software(), breadcrumb('Features', '/features')],
   },
   '/pricing': {

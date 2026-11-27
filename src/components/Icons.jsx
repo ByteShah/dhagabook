@@ -61,3 +61,10 @@ export function Star({ size = 18, filled = true }) {
     </svg>
   );
 }
+
+export const Tag = make(<><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z" /><circle cx="8" cy="8" r="1.6" /></>);
+export const Bag = make(<><path d="M5 8h14l-1 13H6z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></>);
+export const Percent = make(<><path d="M19 5L5 19" /><circle cx="7" cy="7" r="2.2" /><circle cx="17" cy="17" r="2.2" /></>);
+export const Bank = make(<><path d="M3 9l9-5 9 5" /><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18" /></>);
+export const Lock = make(<><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></>);
+export const Send = make(<><path d="M21 3L10 14" /><path d="M21 3l-7 18-4-7-7-4z" /></>);

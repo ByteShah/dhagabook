@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Cart, Chart, Monitor, Truck, Box, Barcode, Bell, Gear, Layers, Invoice, Building, People, Clipboard, Calendar } from '../components/Icons.jsx';
+import { Cart, Chart, Monitor, Truck, Box, Barcode, Bell, Gear, Layers, Invoice, Building, People, Clipboard, Calendar, Chat, Tag, Bag, Percent, Bank, Lock, Send, Mobile, Ledger } from '../components/Icons.jsx';
 import { DemoBand, Mandala, Lotus } from '../components/Bits.jsx';
 
 const TONES = {
@@ -17,10 +17,24 @@ const GROUPS = [
       ['Sales & Billing', Cart, 'sand', ['Quotations and sales orders', 'GST invoices', 'Customer payments']],
       ['CRM', Chart, 'mint', ['Lead capture and pipeline', 'Follow-up reminders', 'Customer history']],
       ['Website & Ecommerce', Monitor, 'sky', ['Business website', 'Online store', 'Online orders into sales']],
+      ['Point of Sale', Monitor, 'mint', ['Fast counter billing', 'Barcode scanning at the counter', 'Receipts on WhatsApp']],
+      ['Agent Commission', Percent, 'sand', ['Agent on every customer and order', 'Commission % by customer, category or product', 'Earned only when the customer pays', 'Agent statements and payouts']],
     ],
   },
   {
-    id: 'inventory', nav: 'Purchase & inventory', label: '02 · Purchase & inventory', color: '#0B6B52', Icon: Box,
+    id: 'textile', nav: 'Textile & garments', label: '02 · Textile & garments', color: '#B25E00', Icon: Tag,
+    title: 'Built for how textile is really sold',
+    text: 'Designs, sets, bundles and bags — the way wholesalers and manufacturers actually trade.',
+    items: [
+      ['Bundle Builder', Layers, 'sand', ['Enter a design once: pieces, colours, sizes', 'Every piece gets its own barcode', 'Sets and bundles created for you']],
+      ['Bags & Racks', Bag, 'mint', ['One bag = one packed bundle', 'Bags in stock, free and to pack', 'Scan bags on dispatch', 'Rack-wise storage and counts']],
+      ['Piece & Bag Labels', Tag, 'sky', ['Design, colour / size and barcode', 'Coded prices on the label', 'Bag labels with bundle and rack']],
+      ['Customer Price Lists', Ledger, 'sand', ['Separate rates per customer or party', 'Prices pick up on every order', 'HSN and GST set per category']],
+      ['Dispatch Details', Truck, 'mint', ['LR number and transport', 'Parcels and sets', 'Printed on the bill']],
+    ],
+  },
+  {
+    id: 'inventory', nav: 'Purchase & inventory', label: '03 · Purchase & inventory', color: '#0B6B52', Icon: Box,
     title: 'Know exactly what you have, and where',
     text: 'Purchasing, warehouses and barcodes stay in sync with every sale.',
     items: [
@@ -31,7 +45,7 @@ const GROUPS = [
     ],
   },
   {
-    id: 'manufacturing', nav: 'Manufacturing', label: '03 · Manufacturing', color: '#0B6B52', Icon: Gear,
+    id: 'manufacturing', nav: 'Manufacturing', label: '04 · Manufacturing', color: '#0B6B52', Icon: Gear,
     title: 'Plan production with confidence',
     text: 'Raw materials and finished goods update stock automatically.',
     items: [
@@ -40,16 +54,40 @@ const GROUPS = [
     ],
   },
   {
-    id: 'accounting', nav: 'Accounting', label: '04 · Accounting', color: '#0B6B52', Icon: Invoice,
+    id: 'accounting', nav: 'Accounting', label: '05 · Accounting', color: '#0B6B52', Icon: Invoice,
     title: 'Books that keep themselves up to date',
     text: 'Every invoice and bill posts to accounts, with GST handled.',
     items: [
       ['Accounting & GST', Invoice, 'mint', ['Aged receivables', 'Aged payables', 'Payment follow-ups', 'GST reports']],
-      ['Multi-Company & Intercompany', Building, 'sky', ['Multiple companies, one login', 'Intercompany transactions']],
+      ['Payments & Bank', Bank, 'sand', ['Receive payment against oldest bills first', 'Kasar / vatav deductions and advances', 'Bank reconciliation']],
+      ['Reports & Ledgers', Ledger, 'mint', ['Party ledger and statements', 'Cash book and day book', 'P&L, balance sheet, trial balance']],
+      ['Multi-Company & Intercompany', Building, 'sky', ['Multiple companies, one login', 'Intercompany transactions', 'Own document numbers per company']],
     ],
   },
   {
-    id: 'people', nav: 'People & projects', label: '05 · People & projects', color: '#1F5FBF', Icon: People,
+    id: 'whatsapp', nav: 'WhatsApp', label: '06 · WhatsApp', color: '#0B6B52', Icon: Chat,
+    title: 'Your business, on WhatsApp',
+    text: 'Official WhatsApp Business API, connected to every sale, bill and delivery. Message charges are set and billed by Meta.',
+    items: [
+      ['Documents on WhatsApp', Send, 'mint', ['Quotations, orders and invoices', 'Payment receipts', 'Dispatch alert with tracking link']],
+      ['Reminders & Payment Links', Bell, 'sand', ['Automatic payment reminders', 'UPI / online payment links', 'Meeting reminders']],
+      ['Catalog & Orders', Bag, 'sky', ['Product catalog synced to WhatsApp', 'Product showcases and offers', 'Orders from WhatsApp into sales']],
+      ['Chats & Campaigns', Chat, 'mint', ['Two-way chat with customers', 'Reply buttons and lists', 'Approved broadcast templates']],
+    ],
+  },
+  {
+    id: 'mobile', nav: 'Mobile app', label: '07 · Mobile app', color: '#1F5FBF', Icon: Mobile,
+    title: 'Run the business from your phone',
+    text: 'The DhagaBook app for Android and iOS, included in the Web + App plan.',
+    items: [
+      ['Owner Dashboard', Chart, 'sky', ['Today’s sales and collections', 'Dues and overdue parties', 'Stock at a glance']],
+      ['Scan & Count', Barcode, 'mint', ['Scan barcodes with the camera', 'Stock counts in the godown', 'Pick and dispatch orders']],
+      ['Works on Weak Internet', Send, 'sand', ['Entries saved on the phone', 'Sent automatically once online']],
+      ['Safe Sign-in', Lock, 'sky', ['Fingerprint / face unlock', 'Each phone approved separately', 'Lost phone? Sign it out remotely']],
+    ],
+  },
+  {
+    id: 'people', nav: 'People & projects', label: '08 · People & projects', color: '#1F5FBF', Icon: People,
     title: 'Keep your team organised',
     text: 'HR, projects and schedules live next to the work they support.',
     items: [
@@ -105,6 +143,40 @@ function Preview({ id }) {
       </div>
     );
   }
+  if (id === 'textile') {
+    return (
+      <div className="pv pv-bundle">
+        <div className="pv-bundle-head"><span>Design 4521 · Kurta set</span><b>3 pcs / set</b></div>
+        <div className="pv-chips">
+          {['M', 'L', 'XL', 'XXL'].map((z, i) => <span key={z} style={{ '--i': i }}>{z}</span>)}
+          {['#B03A48', '#1F5FBF', '#0B6B52'].map((c, i) => <i key={c} style={{ background: c, '--i': i + 4 }} />)}
+        </div>
+        <div className="pv-bags">
+          {[['Bag 12', 'Rack A2'], ['Bag 13', 'Rack A2'], ['Bag 14', 'To pack']].map(([b, r], i) => (
+            <div key={b} className={`pv-bag${r === 'To pack' ? ' is-todo' : ''}`} style={{ '--i': i }}><b>{b}</b><span>{r}</span></div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  if (id === 'whatsapp') {
+    return (
+      <div className="pv pv-wa">
+        <div className="pv-wa-msg" style={{ '--i': 0 }}>Invoice INV-2048 · ₹18,480<small>PDF attached</small></div>
+        <div className="pv-wa-msg" style={{ '--i': 1 }}>Payment due on 30 Nov<span className="pv-wa-btn">Pay now</span></div>
+        <div className="pv-wa-msg is-in" style={{ '--i': 2 }}>Thank you, paid ✅</div>
+      </div>
+    );
+  }
+  if (id === 'mobile') {
+    return (
+      <div className="pv pv-mob">
+        {[['Today’s sale', '₹1,24,500'], ['Collected', '₹86,200'], ['Overdue', '₹62,000']].map(([n, v], i) => (
+          <div key={n} className={`pv-mob-tile${i === 2 ? ' is-due' : ''}`} style={{ '--i': i }}><span>{n}</span><b>{v}</b></div>
+        ))}
+      </div>
+    );
+  }
   const week = ['M', 'T', 'W', 'T', 'F', 'S'];
   const rows = [['Asha', 'PPPPPP'], ['Ravi', 'PPLPPP'], ['Imran', 'PPPAPP'], ['Neha', 'PPPPLP']];
   return (
@@ -154,7 +226,7 @@ export default function Features() {
           <span className="pill">30+ features, one platform</span>
           <h1 className="h1">Everything your business runs on, <span className="accent">connected</span></h1>
           <Lotus />
-          <p className="lead">From the first enquiry to the final payment — sales, purchasing, inventory, manufacturing, accounting and your team, all in DhagaBook.</p>
+          <p className="lead">From the first enquiry to the final payment — sales, textile bundles, inventory, manufacturing, accounting, WhatsApp and your team, all in DhagaBook.</p>
         </div>
         <nav aria-label="Feature groups" className="container gateways">
           {GROUPS.map((g, i) => (

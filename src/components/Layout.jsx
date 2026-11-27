@@ -110,13 +110,13 @@ function Footer() {
                 <Link to="/pricing">Pricing</Link>
                 <Link to="/contact">Book a demo</Link>
               </div>
-              <div className="footer-col">
+              <div className="footer-col footer-col--contact">
                 <h2 className="footer-title">Contact</h2>
                 <a href={`tel:${SITE.phoneIntl}`} onClick={() => track('call_click', { location: 'footer' })}>
                   {SITE.phone}
                 </a>
                 <a href={`mailto:${SITE.email}`} onClick={() => track('email_click', { location: 'footer' })}>{SITE.email}</a>
-                <address>{SITE.address}</address>
+                <address className="footer-address">{SITE.addressLines.map((l) => <span key={l}>{l}</span>)}</address>
               </div>
               <div className="footer-col">
                 <h2 className="footer-title">Legal</h2>
